@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Cluster Combinations</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2a7ae2;
+      margin-bottom: 30px;
+    }
+
+    .cluster-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .cluster-item {
+      background: #fff;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #2a7ae2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1f64c8;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    th {
+      background: #eef2f7;
+      color: #444;
+    }
+
+    tr:hover {
+      background-color: #f5faff;
+    }
+
+    #results h3 {
+      margin-top: 40px;
+      color: #2a7ae2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Select Career Clusters</h2>
+
+  <div class="cluster-list" id="clusterList"></div>
+
+  <button onclick="processClusters()">Process</button>
+
+  <div id="results"></div>
+
+  <!-- Include combinations.js -->
+  <script src="../statics/combinations.js"></script>
+
+  <script>
+    const clusterSubjects = {
+      "Agriculture & Food Science": ["Agriculture", "Biology", "Chemistry"],
+      "Arts & Design": ["Fine Arts", "Home Science", "Computer Studies"],
+      "Business & Finance": ["Business Studies", "Mathematics", "Computer Studies"],
+      "Communication & Media": ["Media Technology", "English", "ICT"],
+      "Computer & ICT": ["Computer Studies", "Mathematics", "Physics"],
+      "Construction & Built Environment": ["Building & Construction", "Mathematics", "Physics"],
+      "Education & Training": ["English", "History & Citizenship", "Religious Education"],
+      "Engineering & Manufacturing": ["Physics", "Mathematics", "General Science"],
+      "Health & Medical Sciences": ["Biology", "Chemistry", "Physics"],
+      "Hospitality & Tourism": ["Home Science", "Geography", "French"],
+      "Law & Public Service": ["History & Citizenship", "Religious Education", "English"],
+      "Marine & Fisheries": ["Marine & Fisheries", "Biology", "Geography"],
+      "Performing Arts": ["Music & Dance", "Fine Arts", "Drama"],
+      "Science & Research": ["Biology", "Chemistry", "Mathematics"],
+      "Social Sciences & Humanities": ["Geography", "History & Citizenship", "Religious Education"],
+      "Sports & Physical Education": ["Physical Education", "Biology", "Sports & Recreation"]
+    };
+
+    const clusterListDiv = document.getElementById("clusterList");
+
+    Object.keys(clusterSubjects).forEach(cluster => {
+      const item = document.createElement("div");
+      item.className = "cluster-item";
+      item.innerHTML = `
+        <label>
+          <input type="checkbox" value="${cluster}" />
+          ${cluster}
+        </label>
+      `;
+      clusterListDiv.appendChild(item);
+    });
+
+    function processClusters() {
+      const checkedClusters = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                                   .map(cb => cb.value);
+
+      const selectedSubjects = new Set();
+      checkedClusters.forEach(cluster => {
+        clusterSubjects[cluster].forEach(subject => selectedSubjects.add(subject));
+      });
+
+      const results = subjectCombinations.filter(combo =>
+        combo.subjects.every(sub => selectedSubjects.has(sub))
+      );
+
+      const resultsDiv = document.getElementById("results");
+      if (checkedClusters.length === 0) {
+        resultsDiv.innerHTML = "<p><em>Please select at least one career cluster.</em></p>";
+        return;
+      }
+
+      let html = `<h3>Combinations for Selected Clusters (${checkedClusters.length})</h3>`;
+      if (results.length === 0) {
+        html += `<p><strong>No matching combinations found.</strong></p>`;
+      } else {
+        html += `<table><thead><tr><th>Code</th><th>Subjects</th></tr></thead><tbody>`;
+        results.forEach(c => {
+          html += `<tr><td>${c.code}</td><td>${c.subjects.join(", ")}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+      }
+      resultsDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

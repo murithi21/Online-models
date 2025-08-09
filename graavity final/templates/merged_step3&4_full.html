@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gravity CBC</title>
+<link href="../statics/style.css" rel="stylesheet"/>
+<link href="../statics/all.min.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" referrerpolicy="no-referrer" rel="stylesheet">
+</link></head>
+<body>
+<main class="main-wrap">
+<header class="main-head">
+<div class="main-nav">
+<nav class="navbar">
+<div class="navbar-nav">
+<div class="title">
+<h3>
+<i><img alt="App Icon" src="../statics/img/logo.png" style="width:35px; height:35px;"/></i>
+<span class="title-text">GravityCBC</span>
+</h3>
+</div>
+<ul class="nav-list">
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/index.html">
+<i><i class="fa-solid fa-landmark"></i></i>
+<span class="link-text">Pathways</span>
+</a>
+</li>
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/step1.html">
+<i<i class="fa-solid fa-1">
+<span class="link-text">STEP 1</span>
+</i<i></a>
+</li>
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/step2.html">
+<i><i class="fa-solid fa-2"></i></i>
+<span class="link-text">STEP 2</span>
+</a>
+</li>
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/step3&amp;4.html">
+<i><i class="fa-solid fa-3"></i></i>
+<span class="link-text">STEP 3&amp;4</span>
+</a>
+</li>
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/step5.html">
+<i><i class="fa-solid fa-5"></i></i>
+<span class="link-text">STEP 5</span>
+</a>
+</li>
+<li class="nav-list-item">
+<a class="nav-link" href="../templates/step6.html">
+<i><i class="fa-solid fa-school-circle-check"></i></i>
+<span class="link-text">School Selection</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+</header>
+<section class="showcase">
+<div class="overlay">
+<div class="head">
+<button class="toggler">
+<i><i class="fa-solid fa-bars"></i></i>
+</button>
+</div>
+<div class="show">
+<div class="top-bar">
+<button onclick="filterByPathway('STEM')">🔬 STEM</button>
+<button onclick="filterByPathway('Social Sciences')">🌍 Social Sciences</button>
+<button onclick="filterByPathway('Arts &amp; Sports')">🎨 Arts &amp; Sports</button>
+<button onclick="filterByPathway('All')">🔁 Show All</button>
+</div>
+<div class="container">
+<div class="left">
+<h2>🎓 Learning Areas</h2>
+<div class="instruction">Click a learning area to see which careers it connects to!</div>
+<ul class="item-list" id="learningAreaList"><li class="mycareers" data-careers="Music Production Professional, Performance &amp; Arts Education Professional" data-pathway="Unknown">Music &amp; Dance</li><li class="mycareers" data-careers="Fine Artist, Arts and Design Professional" data-pathway="Unknown">Fine Art</li><li class="mycareers" data-careers="Art Audio/Video Communication Professional, Media Production Professional, Journalism Professional" data-pathway="Unknown">Media Technology</li><li class="mycareers" data-careers="Software &amp; System Development Professional, Graphic Design Professional, Statistics &amp; Data Analysis Professional" data-pathway="Unknown">Computer Studies</li><li class="mycareers" data-careers="Ball Games Professional, Sports Management Professional, Track &amp; Field Professional" data-pathway="Unknown">Sports &amp; Recreation</li><li class="mycareers" data-careers="Sports &amp; Wellness Professional, Physiotherapy Professional" data-pathway="Unknown">Physical Education</li><li class="mycareers" data-careers="Onstage &amp; Onscreen Storytelling Professional" data-pathway="Unknown">Theatre &amp; Film</li><li class="mycareers" data-careers="Medical Professional, Health Science Professional, Pharmaceutical &amp; Biomedical Professional" data-pathway="Unknown">Biology</li><li class="mycareers" data-careers="Government &amp; Public Administration, Cultural Industries Professional, Legal Professional, Government &amp; Public Administration Professional" data-pathway="Unknown">History &amp; Citizenship</li><li class="mycareers" data-careers="Human Services Professional, Community Leadership Professional" data-pathway="Unknown">Community Service Learning</li><li class="mycareers" data-careers="Religious Practitioner Professional, Ministry &amp; Pastoral Care Professional, Clergy, Temple &amp; Ashram Management Professional" data-pathway="Unknown">Religious Education</li><li class="mycareers" data-careers="Linguistics Professional, Communication &amp; Media Professional, Journalism Professional, Education &amp; Training Professional (English)" data-pathway="Unknown">English</li><li class="mycareers" data-careers="Weather Study Professional, Geospatial &amp; Urban Development Professional" data-pathway="Unknown">Geography</li><li class="mycareers" data-careers="Business Professional, Corporate Finance Management Professional" data-pathway="Unknown">Business Studies</li><li class="mycareers" data-careers="Education &amp; Training Professional (Sign Language), Language Interpreter Professional" data-pathway="Unknown">Sign Language</li><li class="mycareers" data-careers="Linguistic Professional, Mtalam wa Fasihi na Utamaduni, Language Interpreter Professional" data-pathway="Unknown">Kiswahili/ Kenya Sign Language</li><li class="mycareers" data-careers="Linguistic Professional, Global Business Professional, Education &amp; Training Professional, Language Interpreter Professional" data-pathway="Unknown">Mandarin Chinese</li><li class="mycareers" data-careers="Linguistics Professional, Global Business Professional, Education &amp; Training Professional, Neo Dialect Professional, Language Interpreter Professional" data-pathway="Unknown">German</li><li class="mycareers" data-careers="Linguistic Professional, Education &amp; Training Professional, Language Service &amp; Diplomacy Professional, Language Interpreter Professional" data-pathway="Unknown">Arabic</li><li class="mycareers" data-careers="Construction Technician, Architecture &amp; Design Professional" data-pathway="Unknown">Building &amp; Construction</li><li class="mycareers" data-careers="Pharmaceutical &amp; Biomedical Professional, Medical Professional, Health Science Professional" data-pathway="Unknown">Chemistry</li><li class="mycareers" data-careers="Applied Physics Professional, Engineering Professional, Architecture &amp; Design Professional" data-pathway="Unknown">Physics</li><li class="mycareers" data-careers="Environment &amp; Health Professional" data-pathway="Unknown">General Science</li><li class="mycareers" data-careers="Production &amp; Farm Management Professional" data-pathway="Unknown">Agriculture</li><li class="mycareers" data-careers="Statistics &amp; Data Analysis Professional, Software &amp; System Development Professional" data-pathway="Unknown">Mathematics</li><li class="mycareers" data-careers="Marine Operation Professional, Navigation Professional" data-pathway="Unknown">Marine &amp; Fisheries</li><li class="mycareers" data-careers="Electrical Engineering Professional" data-pathway="Unknown">Electricity</li><li class="mycareers" data-careers="Advanced Metal Manufacturing Professional, Metal Fabrication Professional" data-pathway="Unknown">Metal Work</li><li class="mycareers" data-careers="Air Traffic Control Technician, Aviation Crew" data-pathway="Unknown">Aviation Technology</li><li class="mycareers" data-careers="Wood Design &amp; Manufacturing Professional" data-pathway="Unknown">Wood Work</li><li class="mycareers" data-careers="Linguistics Professional, Mtalam wa Fasihi na Utamaduni, Education &amp; Training Professional, Language Service &amp; Diplomacy Professional" data-pathway="Unknown">Fasihi ya Kiswahili</li><li class="mycareers" data-careers="Automotives &amp; Diesel Professional, Power Generation &amp; Distribution Professional" data-pathway="Unknown">Power &amp; Mechanics</li><li class="mycareers" data-careers="Linguistics Professional, Indigineous Language Journalist &amp; Media Professional, Education &amp; Training Professional, Language Interpreter Professional" data-pathway="Unknown">Indigenous Languages</li><li class="mycareers" data-careers="Linguistics Professional, Literery Arts Professional, Education &amp; Training Professional" data-pathway="Unknown">Literature in English</li><li class="mycareers" data-careers="Linguistics Professional, Global Business Professional, Education &amp; Training Professional, Neo Dialect Professional, Language Interpreter Professional" data-pathway="Unknown">French</li><li class="mycareers" data-careers="Nutrition &amp; Food Science Professional" data-pathway="Unknown">Home Science</li></ul>
+</div>
+<div class="right">
+<h2>💼 Suggested Careers</h2>
+<div class="instruction">Click a career to see which subjects can lead to it!</div>
+<ul class="item-list" id="careerList"><li class="mycareers" data-learning="Music &amp; Dance, Computer Studies" data-pathway="Unknown">Music Production Professional</li><li class="mycareers" data-learning="Music &amp; Dance" data-pathway="Unknown">Performance &amp; Arts Education Professional</li><li class="mycareers" data-learning="Fine Art, Computer Studies" data-pathway="Unknown">Fine Artist</li><li class="mycareers" data-learning="Fine Art" data-pathway="Unknown">Arts and Design Professional</li><li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Unknown">Art Audio/Video Communication Professional</li><li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Unknown">Media Production Professional</li><li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Unknown">Journalism Professional</li><li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="Unknown">Software &amp; System Development Professional</li><li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="Unknown">Graphic Design Professional</li><li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Unknown">Ball Games Professional</li><li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Unknown">Sports Management Professional</li><li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Unknown">Track &amp; Field Professional</li><li class="mycareers" data-learning="Physical Education, Sports &amp; Recreation" data-pathway="Unknown">Sports &amp; Wellness Professional</li><li class="mycareers" data-learning="Physical Education, Sports &amp; Recreation" data-pathway="Unknown">Physiotherapy Professional</li><li class="mycareers" data-learning="Theatre &amp; Film, Computer Studies, Literature in English, Fasihi ya Kiswahili" data-pathway="Unknown">Onstage &amp; Onscreen Storytelling Professional</li><li class="mycareers" data-learning="Biology, Chemistry" data-pathway="Unknown">Medical Professional</li><li class="mycareers" data-learning="Biology, Chemistry" data-pathway="Unknown">Health Science Professional</li><li class="mycareers" data-learning="Biology, Chemistry" data-pathway="Unknown">Pharmaceutical &amp; Biomedical Professional</li><li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning" data-pathway="Unknown">Government &amp; Public Administration Professional</li><li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning" data-pathway="Unknown">Cultural Industries Professional</li><li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning" data-pathway="Unknown">Legal Professional</li><li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning" data-pathway="Unknown">Government &amp; Public Leadership Professional</li><li class="mycareers" data-learning="Community Service Learning, History &amp; Citizenship" data-pathway="Unknown">Human Services Professional</li><li class="mycareers" data-learning="Community Service Learning, History &amp; Citizenship" data-pathway="Unknown">Community Leadership Professional</li><li class="mycareers" data-learning="Religious Education, History &amp; Citizenship" data-pathway="Unknown">Religious Practitioner Professional</li><li class="mycareers" data-learning="Religious Education, History &amp; Citizenship" data-pathway="Unknown">Ministry &amp; Pastoral Care Professional</li><li class="mycareers" data-learning="Religious Education, History &amp; Citizenship" data-pathway="Unknown">Clergy</li><li class="mycareers" data-learning="Religious Education, History &amp; Citizenship" data-pathway="Unknown">Temple &amp; Ashram Management Professional</li><li class="mycareers" data-learning="English, Media Technology, Kiswahili/ Kenya Sign Language, Mandarin Chinese, French, German, Arabic, Fasihi ya Kiswahili" data-pathway="Unknown">Linguistics Professional</li><li class="mycareers" data-learning="English, Media Technology" data-pathway="Unknown">Communication &amp; Media Professional</li><li class="mycareers" data-learning="English, Media Technology" data-pathway="Unknown">Journalism Professional</li><li class="mycareers" data-learning="English, Literature in English" data-pathway="Unknown">Education &amp; Training Professional (English)</li><li class="mycareers" data-learning="Geography, Physics" data-pathway="Unknown">Weather Study Professional</li><li class="mycareers" data-learning="Geography, Physics" data-pathway="Unknown">Geospatial &amp; Urban Development Professional</li><li class="mycareers" data-learning="Business Studies, Mathematics" data-pathway="Unknown">Business Professional</li><li class="mycareers" data-learning="Business Studies, Mathematics" data-pathway="Unknown">Corporate Finance Management Professional</li><li class="mycareers" data-learning="Sign Language, English" data-pathway="Unknown">Education &amp; Training Professional (Sign Language)</li><li class="mycareers" data-learning="Sign Language, English, French, Arabic, German, chinese Mandarin" data-pathway="Unknown">Language Interpreter Professional</li><li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Mtalam wa Fasihi na Utamaduni</li><li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Sign Language Interpretation Specialist</li><li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Sign Language Educator</li><li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Indigenous Languages Development Specialist</li><li class="mycareers" data-learning="Mandarin Chinese, German, Arabic" data-pathway="Unknown">Global Business Professional</li><li class="mycareers" data-learning="German, French" data-pathway="Unknown">Neo Dialect Professional</li><li class="mycareers" data-learning="Arabic, French, German, Mandarin Chinese" data-pathway="Unknown">Language Service &amp; Diplomacy Professional</li><li class="mycareers" data-learning="Building &amp; Construction, Physics, Mathematics" data-pathway="Unknown">Construction Technician</li><li class="mycareers" data-learning="Building &amp; Construction, Physics, Mathematics" data-pathway="Unknown">Architecture &amp; Design Professional</li><li class="mycareers" data-learning="Physics, Mathematics" data-pathway="Unknown">Applied Physics Professional</li><li class="mycareers" data-learning="Physics, Mathematics" data-pathway="Unknown">Engineering Professional</li><li class="mycareers" data-learning="General Science, Biology" data-pathway="Unknown">Environment &amp; Health Professional</li><li class="mycareers" data-learning="Agriculture, Biology" data-pathway="Unknown">Production &amp; Farm Management Professional</li><li class="mycareers" data-learning="Mathematics, Computer Studies" data-pathway="Unknown">Statistics &amp; Data Analysis Professional</li><li class="mycareers" data-learning="Agriculture, Home Science, Biology" data-pathway="Unknown">Nutrition &amp; Food Science Professional</li><li class="mycareers" data-learning="Marine &amp; Fisheries, Geography" data-pathway="Unknown">Marine Operation Professional</li><li class="mycareers" data-learning="Marine &amp; Fisheries, Geography" data-pathway="Unknown">Navigation Professional</li><li class="mycareers" data-learning="Electricity, Physics" data-pathway="Unknown">Electrical Engineering Professional</li><li class="mycareers" data-learning="Metal Work" data-pathway="Unknown">Advanced Metal Manufacturing Professional</li><li class="mycareers" data-learning="Metal Work" data-pathway="Unknown">Metal Fabrication Professional</li><li class="mycareers" data-learning="Aviation Technology, Physics, Mathemarics" data-pathway="Unknown">Air Traffic Control Technician</li><li class="mycareers" data-learning="Aviation Technology, physics, Mathematics" data-pathway="Unknown">Aviation Crew</li><li class="mycareers" data-learning="Wood Work" data-pathway="Unknown">Wood Design &amp; Manufacturing Professional</li><li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Mtalam wa Fasihi na Utamaduni</li><li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Fasihi ya Kiswahili Researcher</li><li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Kiswahili Literary Arts Professional</li><li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Kiswahili Curriculum Developer</li><li class="mycareers" data-learning="Power &amp; Mechanics, Physics" data-pathway="Unknown">Automotives &amp; Diesel Professional</li><li class="mycareers" data-learning="Power &amp; Mechanics, physics" data-pathway="Unknown">Power Generation &amp; Distribution Professional</li><li class="mycareers" data-learning="Indigenous Languages" data-pathway="Unknown">Indigenous Language Journalist &amp; Media Professional</li><li class="mycareers" data-learning="Literature in English" data-pathway="Unknown">Literary Arts Professional</li><li class="mycareers" data-learning="" data-pathway="Unknown">Education &amp; Training Professional</li></ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script src="../statics/scripts.js"></script>
+<script>
+        const careers = document.querySelectorAll('#careerList .mycareers');
+        const learningAreas = document.querySelectorAll('#learningAreaList .mycareers');
+    
+        function clearGlows() {
+          careers.forEach(c => c.classList.remove('glow'));
+          learningAreas.forEach(l => l.classList.remove('glow'));
+        }
+    
+        careers.forEach(career => {
+          career.addEventListener('click', function () {
+            clearGlows();
+            this.classList.add('glow');
+            const learningText = this.getAttribute('data-learning').split(',').map(l => l.trim());
+            learningAreas.forEach(area => {
+              if (learningText.includes(area.textContent)) {
+                area.classList.add('glow');
+              }
+            });
+          });
+        });
+    
+        learningAreas.forEach(area => {
+          area.addEventListener('click', function () {
+            clearGlows();
+            this.classList.add('glow');
+            const careerText = this.getAttribute('data-careers').split(',').map(c => c.trim());
+            careers.forEach(career => {
+              if (careerText.includes(career.textContent)) {
+                career.classList.add('glow');
+              }
+            });
+          });
+        });
+    
+        function filterByPathway(pathway) {
+          learningAreas.forEach(area => {
+            area.classList.toggle('hidden', pathway !== 'All' && area.dataset.pathway !== pathway);
+          });
+    
+          careers.forEach(career => {
+            career.classList.toggle('hidden', pathway !== 'All' && career.dataset.pathway !== pathway);
+          });
+    
+          clearGlows();
+        }
+      </script>
+</body>
+</html>

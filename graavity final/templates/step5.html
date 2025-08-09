@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity CBC</title>
+    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../statics/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="main-wrap">
+        <header class="main-head">
+            <div class="main-nav">
+                <nav class="navbar">
+                    <div class="navbar-nav">
+                        <div class="title">
+                            <h3>
+                               <i><img src="../statics/img/logo.png" alt="App Icon" style="width:35px; height:35px;"></i>
+                               <span class="title-text">GravityCBC</span>
+                            </h3>   
+                           </div>
+                           <ul class="nav-list">
+                            <li class="nav-list-item">
+                                <a href="../templates/index.html" class="nav-link">
+                                    <i><i class="fa-solid fa-landmark"></i></i>
+                                    <span class="link-text">Pathways</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step1.html" class="nav-link">
+                                    <i<i class="fa-solid fa-1"></i></i>
+                                    <span class="link-text">STEP 1</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step2.html" class="nav-link">
+                                    <i><i class="fa-solid fa-2"></i></i>
+                                    <span class="link-text">STEP 2</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step3&4.html" class="nav-link">
+                                    <i><i class="fa-solid fa-3"></i></i>
+                                    <span class="link-text">STEP 3&4</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step5.html" class="nav-link">
+                                    <i><i class="fa-solid fa-5"></i></i>
+                                    <span class="link-text">STEP 5</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                             <a href="../templates/step6.html" class="nav-link">
+                                 <i><i class="fa-solid fa-6"></i></i>
+                                 <span class="link-text">STEP 6</span>
+                             </a>
+                         </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="showcase">
+            <div class="overlay">
+                <div class="head">
+                    <button class="toggler">
+                        <i><i class="fa-solid fa-bars"></i></i>
+                    </button>
+                </div>
+                <div class="show">
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Optimize Your Career Picks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Comic Sans MS, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    .overlay2 {
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #0d6efd;
+    }
+    .instructions2 {
+      background-color: #e0f7fa;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+    }
+    table {
+      width: 95%;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      color: #000;
+      font-size: small;
+    }
+    th {
+      background-color: #ffeb3b;
+    }
+    .plus-btn2 {
+      font-size: 24px;
+      color: #28a745;
+      cursor: pointer;
+    }
+    select {
+      padding: 5px;
+      font-size: 1em;
+      margin-top: 5px;
+    }
+    label {
+      display: inline-block;
+      margin: 2px 0;
+    }
+    .hidden2 {
+      display: none;
+    }
+    .disabled2 input {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .result2 {
+      font-weight: bold;
+    }
+    .popup2 {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #0d6efd;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .popup2 h3 {
+      margin-bottom: 10px;
+    }
+    .popup2 input[type="range"] {
+      width: 100%;
+    }
+    .popup2 button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 1em;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup-bg2 {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay2">
+    <h1>🎯 What's Your Dream Job?</h1>
+    <div class="instructions2">
+      <p>Choose a cluster of careers you like, and rate your Ability and interest!</p>
+      <p>✅ Yes - I'm good at it<br>✅ Yes (Biased) 😊 Love it!<br> ✅ Yes(unbiased) 😐 It's okay<br> ❌ No I don't like it</p>
+    </div>
+    <table id="careerTable">
+      <thead>
+        <tr>
+          <th>Career</th>
+          <th>Ability</th>
+          <th>Interest</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="popup-bg2" id="popupBg"></div>
+  <div class="popup2" id="popup">
+    <h3>🎯 Optimize Your Choice</h3>
+    <p>Rate your ability and interest</p>
+    <label>Ability: <span id="abilityVal">3</span></label>
+    <input type="range" min="0" max="5" value="3" id="abilitySlider">
+    <label>Interest: <span id="interestVal">3</span></label>
+    <input type="range" min="0" max="5" value="3" id="interestSlider">
+    <button onclick="applyOptimization()">Apply</button>
+  </div>
+
+  <script>
+    let rowCounter = 0;
+    let selectedCareers = [];
+    let pendingRow = null;
+
+    function addNewRow() {
+      const tbody = document.querySelector('#careerTable tbody');
+      const row = document.createElement('tr');
+
+      row.innerHTML = `
+        <td>
+          <span class="plus-btn2" onclick="openCareerList(this)">➕</span>
+          <select onchange="selectCareer(this)">
+            <option value="">-- Pick Job --</option>
+            <option value="👷 Engineering Professional">👷 Engineering Professional</option>
+            <option value="🧑‍⚕️ Medical Professional">🧑‍⚕️ Medical Professional</option>
+            <option value="🎨 Artist">🎨 Artist</option>
+            <option value="👩‍🏫 Education Professional">👩‍🏫 Education Professional</option>
+            <option value="💻 Media Professional">💻 Media Professional</option>
+          </select>
+        </td>
+        <td class="hidden2 disabled2">
+          <label><input type="radio" name="ability${rowCounter}" value="Yes" onchange="evaluateRow(this)"> ✅ Yes</label>
+          <label><input type="radio" name="ability${rowCounter}" value="No" onchange="evaluateRow(this)"> ❌ No</label>
+        </td>
+        <td class="hidden2 disabled2">
+          <label><input type="radio" name="interest${rowCounter}" value="YesBiased" onchange="evaluateRow(this)">✅ Yes Biased</label>
+          <label><input type="radio" name="interest${rowCounter}" value="YesUnbiased" onchange="evaluateRow(this)"> 😐 Yes Unbiased</label>
+          <label><input type="radio" name="interest${rowCounter}" value="No" onchange="evaluateRow(this)"> ❌ No</label>
+        </td>
+        <td class="hidden2 result2" data-score="0"></td>
+      `;
+      tbody.appendChild(row);
+      rowCounter++;
+    }
+
+    function openCareerList(btn) {
+      const select = btn.nextElementSibling;
+      updateAvailableCareers(select);
+      select.style.display = 'inline';
+      btn.style.display = 'none';
+    }
+
+    function updateAvailableCareers(select) {
+      const options = select.options;
+      for (let i = 1; i < options.length; i++) {
+        options[i].disabled = selectedCareers.includes(options[i].value);
+      }
+    }
+
+    function selectCareer(select) {
+      const selectedCareer = select.value;
+      if (selectedCareer && selectedCareers.includes(selectedCareer)) {
+        alert("That job is already picked.");
+        select.value = "";
+        return;
+      }
+      const row = select.closest('tr');
+      row.children[0].innerText = selectedCareer;
+      selectedCareers.push(selectedCareer);
+      row.children[1].classList.remove("disabled2", "hidden2");
+      row.children[2].classList.remove("disabled2", "hidden2");
+      row.children[3].classList.remove("hidden2");
+      addNewRow();
+    }
+
+    function evaluateRow(radio) {
+      const row = radio.closest('tr');
+      const ability = row.querySelector('input[name^="ability"]:checked')?.value;
+      const interest = row.querySelector('input[name^="interest"]:checked')?.value;
+
+      if (ability && interest) {
+        let score = 0;
+        let resultText = '';
+
+        if ((ability === "No" && interest === "No") || (ability === "Yes" && interest === "No")) {
+          score = -1000;
+          resultText = "❌ Opt Out";
+        } else if (ability === "No" && (interest === "YesBiased" || interest === "YesUnbiased")) {
+          score = -500;
+          resultText = "⚠️ Unrealized Potential";
+        } else {
+          if (ability === "Yes" && interest === "YesBiased") {
+            score = 1002;
+          } else if (ability === "Yes" && interest === "YesUnbiased") {
+            pendingRow = row;
+            showPopup();
+            return;
+          }
+          resultText = '';
+        }
+
+        row.querySelector('.result2').setAttribute("data-score", score);
+        row.querySelector('.result2').textContent = resultText;
+        calculateAndRank();
+      }
+    }
+
+    function showPopup() {
+      document.getElementById("popupBg").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function hidePopup() {
+      document.getElementById("popupBg").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
+
+    document.getElementById("abilitySlider").oninput = function () {
+      document.getElementById("abilityVal").textContent = this.value;
+    };
+    document.getElementById("interestSlider").oninput = function () {
+      document.getElementById("interestVal").textContent = this.value;
+    };
+
+    function applyOptimization() {
+      const ability = parseInt(document.getElementById("abilitySlider").value);
+      const interest = parseInt(document.getElementById("interestSlider").value);
+      const score = ability + interest;
+
+      if (pendingRow) {
+        pendingRow.querySelector(".result2").setAttribute("data-score", score);
+        pendingRow.querySelector(".result2").textContent = '';
+        hidePopup();
+        calculateAndRank();
+      }
+    }
+
+    function calculateAndRank() {
+      const tbody = document.querySelector('#careerTable tbody');
+      const allRows = Array.from(tbody.querySelectorAll('tr'));
+
+      const dataRows = [];
+      let pickerRow = null;
+
+      allRows.forEach(row => {
+        if (row.querySelector('select')) {
+          pickerRow = row;
+        } else {
+          dataRows.push(row);
+        }
+      });
+
+      const scoredRows = dataRows.map(r => ({
+        row: r,
+        score: parseInt(r.querySelector(".result2").getAttribute("data-score") || "0"),
+        resultText: r.querySelector(".result2").textContent
+      }));
+
+      const valid = scoredRows.filter(r => !r.resultText.includes("Opt Out") && !r.resultText.includes("Unrealized"));
+      const unrealized = scoredRows.filter(r => r.resultText.includes("Unrealized"));
+      const optout = scoredRows.filter(r => r.resultText.includes("Opt Out"));
+
+      valid.sort((a, b) => b.score - a.score);
+
+      let rank = 1;
+      valid.forEach(entry => {
+        entry.row.querySelector(".result2").textContent = `${rank++} Choice`;
+        tbody.appendChild(entry.row);
+      });
+
+      unrealized.forEach(entry => {
+        entry.row.querySelector(".result2").textContent = "❌ Opt Out";
+        tbody.appendChild(entry.row);
+      });
+
+      optout.forEach(entry => {
+        entry.row.querySelector(".result2").textContent = "❌ Opt Out";
+        tbody.appendChild(entry.row);
+      });
+
+      if (pickerRow) {
+        tbody.appendChild(pickerRow);
+      }
+    }
+
+    addNewRow();
+  </script>
+</body>
+</html>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../statics/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GravityCBC</title>
+  <link rel="stylesheet" href="../statics/style.css">
+  <link rel="stylesheet" href="../statics/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <main class="main-wrap">
+    <header class="main-head">
+      <div class="main-nav">
+        <nav class="navbar">
+          <div class="navbar-nav">
+            <div class="title">
+              <h3>
+                <i><img src="../statics/img/logo.png" alt="App Icon" style="width:35px; height:35px;"></i>
+                <span class="title-text">GravityCBC</span>
+              </h3>
+            </div>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <a href="../templates/index.html" class="nav-link">
+                  <i><i class="fa-solid fa-landmark"></i></i>
+                  <span class="link-text">Pathways</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a href="../templates/step1.html" class="nav-link">
+                  <i<i class="fa-solid fa-1"></i></i>
+                    <span class="link-text">STEP 1</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a href="../templates/step2.html" class="nav-link">
+                  <i><i class="fa-solid fa-2"></i></i>
+                  <span class="link-text">STEP 2</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a href="../templates/step3&4.html" class="nav-link">
+                  <i><i class="fa-solid fa-3"></i></i>
+                  <span class="link-text">STEP 3&4</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a href="../templates/step5.html" class="nav-link">
+                  <i><i class="fa-solid fa-5"></i></i>
+                  <span class="link-text">STEP 5</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a href="../templates/step6.html" class="nav-link">
+                  <i><i class="fa-solid fa-6"></i></i>
+                  <span class="link-text">STEP 6</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="showcase">
+      <div class="overlay">
+        <div class="head">
+          <button class="toggler">
+            <i><i class="fa-solid fa-bars"></i></i>
+          </button>
+        </div>
+        <div class="show">
+          <!DOCTYPE html>
+          <html lang="en">
+
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Trace Back Learning Areas</title>
+
+            <link rel="stylesheet" href="../static/all.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <style>
+              body {
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                background: linear-gradient(to bottom right, #f2fcff, #c1e0ff);
+                color: #333;
+                margin: 0;
+                padding: 0;
+                scrollbar-color: none;
+                scrollbar-width: none;
+              }
+
+              .overlay1 {
+                padding: 20px;
+                overflow-x: auto;
+              }
+
+              .sub h1 {
+                text-align: center;
+                color: #ff6b6b;
+                font-size: 2em;
+                margin-top: 1vh;
+                text-shadow: 1px 1px #fff;
+              }
+
+              .instructions {
+                background-color: #fffbe6;
+                border: 2px dashed #fdd835;
+                border-radius: 15px;
+                padding: 10px;
+                margin: 10px auto;
+                width: 70vw;
+                text-align: center;
+                font-size: 1.0em;
+              }
+
+              .button-group {
+                margin-top: 1vh;
+                text-align: center;
+                margin-bottom: 2vh;
+              }
+
+              .button-group button {
+                background-color: #ffca28;
+                border: none;
+                border-radius: 10px;
+                padding: 10px 20px;
+                margin: 10px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+              }
+
+              .button-group button:hover {
+                background-color: #ffa000;
+              }
+
+              .score {
+                font-size: 1.4em;
+                text-align: center;
+                margin-bottom: 20px;
+                color: #0288d1;
+              }
+
+              .identify {
+                margin-left: none;
+              }
+
+              .identify-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: nowrap;
+                margin: 10px;
+                border: 1px solid #ccc;
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+                border-radius: 8px;
+                margin-top: 10px;
+                height: 40%;
+                margin-right: 0;
+                margin-left: 0;
+              }
+
+              .tree {
+                text-align: center;
+                margin: auto;
+              }
+
+              .tree ul {
+                list-style: none;
+
+                padding-top: 2vh;
+                position: relative;
+                display: table;
+                margin: 0 auto;
+              }
+
+              .tree li {
+                display: table-cell;
+                text-align: center;
+                position: relative;
+                padding: 20px 0 0 0;
+                list-style-type: none;
+                vertical-align: top;
+              }
+
+              .tree .node {
+                background-color: #ffecb3;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 8px;
+                text-align: center;
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+                font-weight: bold;
+              }
+
+              .tree li::before,
+              .tree li::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                border-top: 1px solid #ccc;
+                width: 50%;
+                height: 3vh;
+              }
+
+              .tree li::before {
+                left: 0;
+                border-right: 1px solid #ccc;
+              }
+
+              .tree li::after {
+                right: 0;
+                border-left: 1px solid #ccc;
+              }
+
+              .tree li:only-child::before,
+              .tree li:only-child::after {
+                display: none;
+              }
+
+              .tree li:only-child {
+                padding-top: 0;
+              }
+
+              .tree li:first-child::before,
+              .tree li:last-child::after {
+                border: 0 none;
+              }
+
+              .tree li .node {
+                display: inline-block;
+                padding: 8px 12px;
+                border: 1px solid #00838f;
+                border-radius: 8px;
+                font-family: sans-serif;
+              }
+
+              .node {
+                width: 7vw;
+                font-family: sans-serif;
+                font-size: 0.95vw;
+              }
+
+
+              .node.green {
+                background-color: #dcedc8;
+              }
+
+              .node.black {
+                background-color: #e1bee7;
+              }
+
+              .node.white {
+                background-color: #b3e5fc;
+              }
+
+              .LA-container {
+                padding: 2px, 2px;
+                background-color: #ac14ed38;
+                border: 1px solid #ccc;
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+                border-radius: 8px;
+                height: 28vh;
+                margin-right: 10px;
+                margin-left: 10px;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                /* 7 equal columns */
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 30px;
+                overflow-y: auto;
+                /* Hide scrollbar */
+                scrollbar-width: none;
+                /* Firefox */
+                -ms-overflow-style: none;
+                /* IE and Edge */
+              }
+
+              .LA-content {
+                background-color: #fff;
+                border: 2px solid #2188dc4d;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 10px;
+                cursor: grab;
+                width: 10vw;
+                text-align: center;
+                font-weight: bold;
+                transition: background-color 0.3s;
+              }
+
+              .LA-content:hover {
+                background-color: #e3f2fd;
+              }
+
+              .LA-content.locked {
+                opacity: 0.5;
+                background-color: #eeeeee;
+                pointer-events: none;
+                cursor: not-allowed;
+              }
+
+              .drop-list {
+                padding-top: 5px;
+              }
+            </style>
+
+            <style>
+              #glossaryPanel {
+                position: fixed;
+                top: 0;
+                right: -400px;
+                width: 400px;
+                height: 100%;
+                background-color: #f9f9f9;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+                transition: right 0.3s ease;
+                z-index: 9999;
+                padding: 20px;
+              }
+
+              #glossaryPanel.open {
+                right: 0;
+              }
+
+              #glossaryToggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 10000;
+              }
+
+              #glossaryPanel h2 {
+                margin-top: 0;
+              }
+
+              .glossary-term {
+                margin-bottom: 20px;
+              }
+
+              .glossary-exit {
+                margin-top: 30px;
+              }
+
+              #searchInput {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                font-size: 16px;
+              }
+
+              #searchButton {
+                display: inline-block;
+                margin-bottom: 15px;
+                padding: 5px 10px;
+              }
+            </style>
+
+
+
+          </head>
+
+          <body>
+            <div class="overlay1">
+              <div class="sub">
+                <h1>🎓 TRACE BACK THE LEARNING AREAS</h1>
+              </div>
+
+              <div class="instructions">
+                <p class="message">Relate the learning areaas in Senior school to the learning areas in Junior school
+                  where they relate MOST.</p>
+                <div class="button-group">
+                  <button id="undoBtn">Undo</button>
+                  <button id="assessBtn">Assess</button>
+                  <button id="correctBtn">Correct</button>
+                  <button onclick="location.reload()">Retry</button>
+                </div>
+                <!--Search Facility-->
+                <!DOCTYPE html>
+                <html>
+
+                <head>
+                  <meta charset="UTF-8">
+                  <title>Search Elements in Page</title>
+                  <style>
+                    body {
+                      font-family: Arial, sans-serif;
+                    }
+
+                    #searchBox {
+                      padding: 5px;
+                      width: 200px;
+                    }
+
+                    #searchButton {
+                      padding: 5px 10px;
+                      margin-left: 5px;
+                    }
+
+                    #clearButton {
+                      padding: 5px 10px;
+                    }
+
+                    .highlight {
+                      background-color: yellow;
+                    }
+                  </style>
+                </head>
+
+                <body>
+
+                  <input type="text" id="searchBox" placeholder="Type to search...">
+                  <button id="searchButton">Search</button>
+                  <button id="clearButton">Clear</button>
+
+                  <script>
+                    document.getElementById("searchButton").addEventListener("click", function () {
+                      let searchValue = document.getElementById("searchBox").value.toLowerCase();
+                      let paragraphs = document.querySelectorAll(".LA-content");
+
+                      paragraphs.forEach(p => {
+                        let text = p.textContent.toLowerCase();
+                        p.classList.remove("highlight");
+
+                        if (searchValue && text.includes(searchValue)) {
+                          p.style.display = "";
+                          p.classList.add("highlight");
+                        } else if (searchValue) {
+                          p.style.display = "none";
+                        } else {
+                          p.style.display = "";
+                        }
+                      });
+                    });
+
+                    document.getElementById("clearButton").addEventListener("click", function () {
+                      document.getElementById("searchBox").value = "";
+                      let paragraphs = document.querySelectorAll(".content p");
+                      paragraphs.forEach(p => {
+                        p.style.display = "";
+                        p.classList.remove("highlight");
+                      });
+                    });
+                  </script>
+
+                </body>
+
+                </html>
+
+              </div>
+
+              <div class="score">Score: <span id="score">0</span></div>
+
+              <div class="identify-container">
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node green arts">Creative Arts and Sports</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node black social">Social Studies</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node black rel">Religious Education</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node black literature">English</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node black swahili">Kiswahili</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node white maths">Mathematics</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node white pure">Integrated Science</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node white technical">Pre-Technical</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="identify">
+                  <div class="tree">
+                    <ul>
+                      <li>
+                        <div class="node white applied">Agriculture</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="LA-container">
+                <div class="LA-content arts">Music and Dance</div>
+                <div class="LA-content arts">Theatre and Film</div>
+                <div class="LA-content technical">Media Technology</div>
+                <div class="LA-content technical">Building Construction</div>
+                <div class="LA-content arts">Physical Education</div>
+                <div class="LA-content social">History and Citizenship</div>
+                <div class="LA-content literature">English</div>
+                <div class="LA-content social">Geography</div>
+                <div class="LA-content pure">Chemistry</div>
+                <div class="LA-content maths">Mathematics</div>
+                <div class="LA-content applied">Agriculture</div>
+                <div class="LA-content pure">Physics</div>
+                <div class="LA-content applied">Home Science</div>
+                <div class="LA-content technical">Marine and Fisheries Technology</div>
+                <div class="LA-content technical">Metal Work</div>
+                <div class="LA-content swahili">Kiswahili/ Kenya Sign Language</div>
+                <div class="LA-content arts">Fine Art</div>
+                <div class="LA-content technical">General Science</div>
+                <div class="LA-content swahili">Indigenous Language</div>
+                <div class="LA-content literature">Sign Language</div>
+                <div class="LA-content literature">French</div>
+                <div class="LA-content technical">Woodwork</div>
+                <div class="LA-content technical">Arabic</div>
+                <div class="LA-content technical">Mandarin</div>
+                <div class="LA-content literature">German</div>
+                <div class="LA-content social">Community Service Learning</div>
+                <div class="LA-content technical">Business Studies</div>
+                <div class="LA-content arts">Sports and Recreation</div>
+                <div class="LA-content literature">Literature in English</div>
+                <div class="LA-content rel">Religious Education</div>
+                <div class="LA-content pure">Biology</div>
+                <div class="LA-content technical">Computer Studies</div>
+                <div class="LA-content technical">Power Mechanics</div>
+                <div class="LA-content technical">Aviation</div>
+                <div class="LA-content technical">Electricity</div>
+                <div class="LA-content swahili">Fasihi ya Kiswahili</div>
+
+
+              </div>
+
+              <!-- Glossary Toggle Button -->
+              <button id="glossaryToggle">Glossary</button>
+
+              <!-- Glossary Slide-in Panel -->
+              <div id="glossaryPanel">
+                <h2>Glossary</h2>
+
+                <!-- Search Input -->
+                <input type="text" id="searchInput" placeholder="Search term...">
+                <button id="searchButton">Search</button>
+
+                <div id="glossaryTerms">
+                  <div class="glossary-term">
+                    <h3>Pathways</h3>
+                    <p>Structured career or academic routes that guide learners based on their interests and strengths.
+                    </p>
+                  </div>
+
+                  <div class="glossary-term">
+                    <h3>STEM</h3>
+                    <p>Science, Technology, Engineering, and Mathematics – areas that prepare students for tech careers.
+                    </p>
+                  </div>
+
+                  <div class="glossary-term">
+                    <h3>Social Sciences</h3>
+                    <p>Subjects like history, geography, and civics that study society and human behavior.</p>
+                  </div>
+
+                  <div class="glossary-term">
+                    <h3>Art and Sports</h3>
+                    <p>Creative and physical areas including music, drama, design, and athletics.</p>
+                  </div>
+
+                  <div class="glossary-term">
+                    <h3>Accounting</h3>
+                    <p>The process of recording, summarizing, and analyzing financial transactions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Actuarial Science</h3>
+                    <p>The study of risk and uncertainty using mathematics and statistics.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Advertising</h3>
+                    <p>The business of creating and promoting products or services to consumers.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Aerospace Engineering</h3>
+                    <p>The design, development, and testing of aircraft, spacecraft, and related systems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Agricultural Economics</h3>
+                    <p>The application of economic principles to farming and agribusiness.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Agronomy</h3>
+                    <p>The science and technology of producing and using plants for food, fuel, and land reclamation.
+                    </p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Animal Science</h3>
+                    <p>The study of the biology and management of animals for human use.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Anthropology</h3>
+                    <p>The study of human societies, cultures, and their development.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Applied Mathematics</h3>
+                    <p>The use of mathematical methods in practical applications across various fields.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Archaeology</h3>
+                    <p>The study of human history through excavation and analysis of artifacts.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Architecture</h3>
+                    <p>The art and science of designing and constructing buildings.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Artificial Intelligence</h3>
+                    <p>The creation of systems that can perform tasks requiring human intelligence.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Astronomy</h3>
+                    <p>The scientific study of celestial objects, space, and the universe.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Automotive Engineering</h3>
+                    <p>The design, development, and manufacturing of motor vehicles.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Aviation Management</h3>
+                    <p>The operation and oversight of airline and airport activities.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Biochemistry</h3>
+                    <p>The study of chemical processes within living organisms.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Bioinformatics</h3>
+                    <p>The application of computer technology to the management of biological data.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Biological Sciences</h3>
+                    <p>The study of living organisms and life processes.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Biomedical Engineering</h3>
+                    <p>The application of engineering principles to healthcare and biology.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Biotechnology</h3>
+                    <p>The use of living systems and organisms to develop products and technologies.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Botany</h3>
+                    <p>The scientific study of plants.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Business Administration</h3>
+                    <p>The management and operation of businesses and organizations.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Chemical Engineering</h3>
+                    <p>The application of chemistry, biology, and physics to solve problems involving chemicals.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Chemistry</h3>
+                    <p>The study of substances, their properties, and reactions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Civil Engineering</h3>
+                    <p>The design, construction, and maintenance of infrastructure projects.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Classical Studies</h3>
+                    <p>The study of ancient Greek and Roman languages, literature, and history.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Clinical Psychology</h3>
+                    <p>The assessment and treatment of mental illness and behavioral disorders.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Communication Studies</h3>
+                    <p>The study of human communication processes and strategies.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Computer Engineering</h3>
+                    <p>The design and development of computer hardware and software systems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Computer Science</h3>
+                    <p>The study of computers, programming, and computational systems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Construction Management</h3>
+                    <p>The planning and coordination of building projects.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Criminology</h3>
+                    <p>The study of crime, criminal behavior, and the justice system.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Culinary Arts</h3>
+                    <p>The art and science of cooking and food preparation.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Cybersecurity</h3>
+                    <p>The protection of computer systems from theft, damage, or unauthorized access.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Data Analytics</h3>
+                    <p>The process of examining data sets to draw conclusions and insights.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Data Science</h3>
+                    <p>The extraction of knowledge and insights from structured and unstructured data.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Dentistry</h3>
+                    <p>The study and treatment of conditions affecting teeth and oral health.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Digital Marketing</h3>
+                    <p>The promotion of products or services using online and digital channels.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Ecology</h3>
+                    <p>The study of interactions between organisms and their environment.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Economics</h3>
+                    <p>The study of production, distribution, and consumption of goods and services.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Education</h3>
+                    <p>The process of facilitating learning and acquiring knowledge.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Electrical Engineering</h3>
+                    <p>The study and application of electricity, electronics, and electromagnetism.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Emergency Management</h3>
+                    <p>The organization and management of resources during disasters.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Energy Management</h3>
+                    <p>The efficient use and monitoring of energy resources.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Engineering Management</h3>
+                    <p>The leadership and management of engineering projects and teams.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Environmental Science</h3>
+                    <p>The study of the environment and solutions to environmental problems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Epidemiology</h3>
+                    <p>The study of disease distribution and determinants in populations.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Fashion Design</h3>
+                    <p>The art of designing clothing and accessories.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Film Production</h3>
+                    <p>The process of producing movies and visual storytelling content.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Finance</h3>
+                    <p>The management of money, investments, and financial institutions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Fine Arts</h3>
+                    <p>The creation and study of visual and performing arts.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Fisheries Science</h3>
+                    <p>The study and management of fish resources.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Food Science</h3>
+                    <p>The study of food composition, processing, and safety.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Forensic Science</h3>
+                    <p>The application of scientific methods to solve crimes.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Forestry</h3>
+                    <p>The science and practice of managing forest resources.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Game Design</h3>
+                    <p>The creation and development of video games.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Genetics</h3>
+                    <p>The study of genes, heredity, and genetic variation.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Geography</h3>
+                    <p>The study of Earth's landscapes, environments, and human societies.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Geology</h3>
+                    <p>The study of the Earth's physical structure and history.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Graphic Design</h3>
+                    <p>The art of visual communication through typography, imagery, and layout.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Health Administration</h3>
+                    <p>The management of healthcare systems and organizations.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>History</h3>
+                    <p>The study of past events and human societies.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Hospitality Management</h3>
+                    <p>The management of hotels, restaurants, and tourism businesses.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Human Resource Management</h3>
+                    <p>The management of employee relations, recruitment, and development.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Industrial Design</h3>
+                    <p>The design of manufactured products for usability and aesthetics.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Industrial Engineering</h3>
+                    <p>The optimization of complex processes and systems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Information Technology</h3>
+                    <p>The use of computers and telecommunications to store and transmit data.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Interior Design</h3>
+                    <p>The planning and design of interior spaces.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>International Relations</h3>
+                    <p>The study of relationships between countries and global affairs.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Journalism</h3>
+                    <p>The gathering, assessment, and presentation of news and information.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Landscape Architecture</h3>
+                    <p>The design of outdoor areas, landmarks, and structures.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Law</h3>
+                    <p>The study and practice of legal systems and regulations.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Library Science</h3>
+                    <p>The study of managing information and library resources.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Linguistics</h3>
+                    <p>The scientific study of language and its structure.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Marine Biology</h3>
+                    <p>The study of organisms in ocean and other saltwater environments.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Marketing</h3>
+                    <p>The promotion and selling of products or services.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Materials Science</h3>
+                    <p>The study of materials and their properties for various applications.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Mathematics</h3>
+                    <p>The abstract science of number, quantity, and space.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Mechanical Engineering</h3>
+                    <p>The design and manufacturing of mechanical systems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Mechatronics</h3>
+                    <p>The integration of mechanical, electronic, and software engineering.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Medical Laboratory Science</h3>
+                    <p>The study and analysis of medical samples for diagnosis.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Medicine</h3>
+                    <p>The science of diagnosing, treating, and preventing disease.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Meteorology</h3>
+                    <p>The study of weather and atmospheric conditions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Microbiology</h3>
+                    <p>The study of microorganisms and their effects.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Mining Engineering</h3>
+                    <p>The extraction and processing of minerals from the Earth.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Music</h3>
+                    <p>The study and performance of musical arts.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Nanotechnology</h3>
+                    <p>The manipulation of matter on an atomic or molecular scale.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Nursing</h3>
+                    <p>The care and treatment of patients to promote health and recovery.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Nutrition</h3>
+                    <p>The study of nutrients in food and their effects on health.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Occupational Therapy</h3>
+                    <p>The treatment to help people participate in daily activities.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Oceanography</h3>
+                    <p>The study of oceans and marine environments.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Operations Management</h3>
+                    <p>The administration of business practices for efficiency.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Optometry</h3>
+                    <p>The diagnosis and treatment of vision problems.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Paleontology</h3>
+                    <p>The study of prehistoric life through fossils.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Performing Arts</h3>
+                    <p>The creation and performance of artistic works for an audience.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Petroleum Engineering</h3>
+                    <p>The exploration and extraction of oil and gas.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Pharmacy</h3>
+                    <p>The preparation and dispensing of medications.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Philosophy</h3>
+                    <p>The study of fundamental questions about existence and knowledge.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Photography</h3>
+                    <p>The art and practice of taking and processing photographs.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Physical Education</h3>
+                    <p>The teaching and promotion of physical fitness and health.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Physics</h3>
+                    <p>The study of matter, energy, and the forces of nature.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Physiotherapy</h3>
+                    <p>The treatment to restore, maintain, and improve movement.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Plant Science</h3>
+                    <p>The study of plants and their uses.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Political Science</h3>
+                    <p>The study of political systems and government.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Project Management</h3>
+                    <p>The planning, execution, and completion of projects.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Psychology</h3>
+                    <p>The study of the mind and behavior.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Public Administration</h3>
+                    <p>The implementation of government policy and programs.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Public Health</h3>
+                    <p>The science of protecting and improving community health.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Quantity Surveying</h3>
+                    <p>The estimation and control of construction costs.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Real Estate Management</h3>
+                    <p>The management of property development and transactions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Religious Studies</h3>
+                    <p>The study of religious beliefs and practices.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Renewable Energy</h3>
+                    <p>The production of energy from renewable sources.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Robotics</h3>
+                    <p>The design and use of robots for various applications.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Social Work</h3>
+                    <p>The provision of support to individuals and communities in need.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Sociology</h3>
+                    <p>The study of society, social relationships, and institutions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Software Engineering</h3>
+                    <p>The design, development, and maintenance of software applications.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Sports Management</h3>
+                    <p>The business and organization of sports teams and events.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Statistics</h3>
+                    <p>The collection, analysis, and interpretation of numerical data.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Supply Chain Management</h3>
+                    <p>The management of goods and services flow.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Sustainable Development</h3>
+                    <p>The practice of meeting present needs without compromising the future.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Teaching</h3>
+                    <p>The practice of educating and imparting knowledge.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Telecommunications</h3>
+                    <p>The transmission of information over distances.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Theatre Arts</h3>
+                    <p>The study and performance of drama and stage productions.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Theology</h3>
+                    <p>The study of the nature of the divine and religion.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Tourism Management</h3>
+                    <p>The management of travel and tourism services.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Urban Planning</h3>
+                    <p>The development and design of land use and infrastructure.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Veterinary Medicine</h3>
+                    <p>The treatment and care of animals.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Wildlife Management</h3>
+                    <p>The conservation and regulation of wildlife populations.</p>
+                  </div>
+                  <div class="glossary-term">
+                    <h3>Zoology</h3>
+                    <p>The study of animals and their biology.</p>
+                  </div>
+
+                </div>
+
+
+
+                <!-- Exit Button -->
+                <div class="glossary-exit">
+                  <button onclick="document.getElementById('glossaryPanel').classList.remove('open')">Close</button>
+                </div>
+              </div>
+
+              <!--Instructions PopUp-->
+
+
+
+            </div>
+
+            <script>
+              let draggedItem = null;
+              let score = 0;
+              const scoreDisplay = document.getElementById("score");
+
+              document.querySelectorAll(".LA-content").forEach(item => {
+                item.setAttribute("draggable", "true");
+
+                item.addEventListener("dragstart", () => {
+                  draggedItem = item;
+                });
+
+                item.addEventListener("dragend", () => {
+                  draggedItem = null;
+                });
+              });
+
+              document.querySelectorAll(".node").forEach(node => {
+                const hasChildList = node.nextElementSibling && node.nextElementSibling.tagName === "UL";
+                if (!hasChildList) {
+                  node.addEventListener("dragover", e => e.preventDefault());
+
+                  node.addEventListener("drop", e => {
+                    e.preventDefault();
+                    if (!draggedItem || draggedItem.classList.contains("locked")) return;
+
+                    const itemClasses = Array.from(draggedItem.classList).filter(c => c !== 'LA-content');
+                    const nodeClasses = Array.from(node.classList).filter(c => c !== 'node');
+                    const matches = itemClasses.filter(cls => nodeClasses.includes(cls));
+                    score += matches.length;
+                    scoreDisplay.textContent = score;
+
+                    draggedItem.classList.add("locked");
+                    draggedItem.setAttribute("draggable", "false");
+
+                    draggedItem.style.background = "none";
+                    draggedItem.style.border = "none";
+                    draggedItem.style.margin = "2px 0";
+                    draggedItem.style.padding = "0";
+                    draggedItem.style.fontWeight = "inherit";
+                    draggedItem.style.color = "inherit";
+                    draggedItem.style.fontSize = "inherit";
+                    draggedItem.style.cursor = "default";
+                    draggedItem.style.pointerEvents = "none";
+                    draggedItem.style.width = "100%";
+                    draggedItem.style.display = "block";
+                    draggedItem.style.whiteSpace = "wrap";
+                    draggedItem.style.color = "Red";
+
+                    if (!node.querySelector(".drop-list")) {
+                      const list = document.createElement("div");
+                      list.classList.add("drop-list");
+                      list.style.display = "flex";
+                      list.style.flexDirection = "column";
+                      list.style.gap = "2px";
+                      node.appendChild(list);
+                    }
+
+                    node.querySelector(".drop-list").appendChild(draggedItem);
+                    draggedItem = null;
+                  });
+                }
+              });
+
+              document.getElementById("assessBtn").addEventListener("click", () => {
+                document.querySelectorAll(".LA-content.locked").forEach(item => {
+                  const parentNode = item.parentElement.closest(".node");
+                  const itemClasses = Array.from(item.classList).filter(c => !["LA-content", "locked"].includes(c));
+                  const nodeClasses = Array.from(parentNode?.classList || []).filter(c => c !== "node");
+                  const correct = itemClasses.some(cls => nodeClasses.includes(cls));
+
+                  item.textContent = item.textContent.replace(/[✅❌]/g, "").trim();
+                  item.textContent += correct ? " ✅" : " ❌";
+                });
+              });
+
+              document.getElementById("correctBtn").addEventListener("click", () => {
+                document.querySelectorAll(".LA-content").forEach(item => {
+                  const itemClasses = Array.from(item.classList).filter(c => !["LA-content", "locked"].includes(c));
+                  const targetNode = Array.from(document.querySelectorAll(".node")).find(node => {
+                    const nodeClasses = Array.from(node.classList).filter(c => c !== "node");
+                    const hasChildList = node.nextElementSibling && node.nextElementSibling.tagName === "UL";
+                    return !hasChildList && itemClasses.some(cls => nodeClasses.includes(cls));
+                  });
+
+                  if (targetNode) {
+                    if (item.parentElement) item.parentElement.removeChild(item);
+                    item.textContent = item.textContent.replace(/[✅❌]/g, "").trim();
+
+                    item.classList.add("locked");
+                    item.setAttribute("draggable", "false");
+
+                    item.style.background = "none";
+                    item.style.border = "none";
+                    item.style.margin = "2px 0";
+                    item.style.padding = "0";
+                    item.style.fontWeight = "inherit";
+                    item.style.color = "inherit";
+                    item.style.fontSize = "inherit";
+                    item.style.cursor = "default";
+                    item.style.pointerEvents = "none";
+                    item.style.width = "100%";
+                    item.style.display = "block";
+                    item.style.whiteSpace = "wrap";
+
+                    if (!targetNode.querySelector(".drop-list")) {
+                      const list = document.createElement("div");
+                      list.classList.add("drop-list");
+                      list.style.display = "flex";
+                      list.style.flexDirection = "column";
+                      list.style.gap = "2px";
+                      targetNode.appendChild(list);
+                    }
+
+                    targetNode.querySelector(".drop-list").appendChild(item);
+                  }
+                });
+              });
+            </script>
+
+            <script>
+              // Toggle glossary panel
+              document.getElementById('glossaryToggle').onclick = function () {
+                document.getElementById('glossaryPanel').classList.toggle('open');
+              };
+
+              // Glossary search functionality
+              document.getElementById('searchButton').onclick = function () {
+                const input = document.getElementById('searchInput').value.toLowerCase();
+                const terms = document.querySelectorAll('#glossaryTerms .glossary-term');
+
+                terms.forEach(term => {
+                  const title = term.querySelector('h3').innerText.toLowerCase();
+                  const desc = term.querySelector('p').innerText.toLowerCase();
+
+                  if (title.includes(input) || desc.includes(input)) {
+                    term.style.display = 'block';
+                  } else {
+                    term.style.display = 'none';
+                  }
+                });
+              };
+
+              // Optional: Allow typing to trigger search
+              document.getElementById('searchInput').addEventListener('keyup', function (e) {
+                if (e.key === 'Enter') document.getElementById('searchButton').click();
+              });
+
+            </script>
+
+
+          </body>
+          <!--Instructions popup-->
+          <!DOCTYPE html>
+          <html lang="en">
+
+          <head>
+            <meta charset="UTF-8">
+            <title>Instruction Popup Guide</title>
+            <style>
+              #instructionPopupP {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+              }
+
+              .popupContentP {
+                background: white;
+                padding: 20px 25px;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 420px;
+                text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+              }
+
+              .buttonsP {
+                margin-top: 15px;
+              }
+
+              .buttonsP button {
+                margin: 5px;
+                padding: 8px 14px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background: #007BFF;
+                color: white;
+              }
+
+              .buttonsP button:hover {
+                background: #0056b3;
+              }
+
+              .instructionImageP {
+                max-width: 100%;
+                margin-top: 10px;
+                border-radius: 6px;
+              }
+            </style>
+          </head>
+
+          <body>
+
+            
+
+            <!-- Instruction Popup -->
+            <div id="instructionPopupP">
+              <div class="popupContentP">
+                <p id="instructionTextP">Loading...</p>
+                <img id="instructionImageP" class="instructionImageP" style="display:none;">
+                <div class="buttonsP">
+                  <button onclick="prevInstructionP()">Previous</button>
+                  <button onclick="skipInstructionsP()">Exit</button>
+                  <button onclick="nextInstructionP()">Next</button>
+
+                </div>
+              </div>
+            </div>
+
+            <script>
+              const instructionsP = [
+                { text: "Welcome to the Step 1 of understanding CBE curriculum for a better decision making.", img: "" },
+                { text: "In this step you are required to relate the learning areas in Senior school to the learning areas in Junior school where they relate MOST.", img: "" },
+                { text: "These are the learning areas in Junior school", img: "../statics/img/shot1.png" }, // Replace with actual image path
+                { text: "These are the learning areas in Senior school", img: "../statics/img/shot2.png" },  // Replace with actual image path
+                { text: "You are required to drag the learning areas in Senior school to the MOST related learning area in Junior school.", img: "" },
+                { text: "For every correct Match you will earn one point", img: "../statics/img/score.png" },
+                { text: "You can search for learning areas in Senior school using this box", img: "../statics/img/search.png" },
+                { text: "Now, Let's GO!" }
+              ];
+
+              let currentStepP = 0;
+
+              function showInstructionP() {
+                const step = instructionsP[currentStepP];
+                document.getElementById('instructionTextP').innerText = step.text;
+
+                if (step.img) {
+                  document.getElementById('instructionImageP').src = step.img;
+                  document.getElementById('instructionImageP').style.display = 'block';
+                } else {
+                  document.getElementById('instructionImageP').style.display = 'none';
+                }
+              }
+
+              function nextInstructionP() {
+                if (currentStepP < instructionsP.length - 1) {
+                  currentStepP++;
+                  showInstructionP();
+                } else {
+                  skipInstructionsP();
+                }
+              }
+
+              function prevInstructionP() {
+                if (currentStepP > 0) {
+                  currentStepP--;
+                  showInstructionP();
+                }
+              }
+
+              function skipInstructionsP() {
+                document.getElementById('instructionPopupP').style.display = 'none';
+              }
+
+              window.onload = function () {
+                document.getElementById('instructionPopupP').style.display = 'flex';
+                showInstructionP();
+              };
+            </script>
+
+          </body>
+
+          </html>
+
+
+
+          </html>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../statics/scripts.js"></script>
+
+
+</body>
+
+</html>

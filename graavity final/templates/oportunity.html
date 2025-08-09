@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity CBC</title>
+    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../statics/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="main-wrap">
+        <header class="main-head">
+            <div class="main-nav">
+                <nav class="navbar">
+                    <div class="navbar-nav">
+                        <div class="title">
+                            <h3>
+                                <i><img src="../statics/img/logo.png" alt="App Icon" style="width:35px; height:35px;"></i>
+                               <span class="title-text">GravityCBC</span>
+                            </h3>   
+                           </div>
+                           <ul class="nav-list">
+                            <li class="nav-list-item">
+                                <a href="../templates/index.html" class="nav-link">
+                                    <i><i class="fa-solid fa-landmark"></i></i>
+                                    <span class="link-text">Pathways</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step1.html" class="nav-link">
+                                    <i<i class="fa-solid fa-1"></i></i>
+                                    <span class="link-text">STEP 1</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step2.html" class="nav-link">
+                                    <i><i class="fa-solid fa-2"></i></i>
+                                    <span class="link-text">STEP 2</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step3&4.html" class="nav-link">
+                                    <i><i class="fa-solid fa-3"></i></i>
+                                    <span class="link-text">STEP 3&4</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step5.html" class="nav-link">
+                                    <i><i class="fa-solid fa-5"></i></i>
+                                    <span class="link-text">STEP 5</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                             <a href="../templates/step6.html" class="nav-link">
+                                 <i><i class="fa-solid fa-school-circle-check"></i></i>
+                                 <span class="link-text">School Selection</span>
+                             </a>
+                         </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="showcase">
+            <div class="overlay">
+                <div class="head">
+                    <button class="toggler">
+                        <i><i class="fa-solid fa-bars"></i></i>
+                    </button>
+                </div>
+                <div class="show">
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                      <meta charset="UTF-8" />
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                      <title>Fun Graph for Kids</title>
+                      <style>
+                        body {
+                          margin: 0;
+                          display: flex;
+                          height: 100vh;
+                          font-family: 'Comic Sans MS', cursive, sans-serif;
+                          background: #e6f7ff;
+                          justify-content: center;
+                          align-items: center;
+                        }
+                    
+                        #graph-container {
+                          flex: 1;
+                          width: 40%;
+                          height: 100%;
+                          position: relative;
+                          background: #fff;
+                          border-radius: 20px;
+                          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                          overflow: hidden;
+                          margin-left: 10%;
+                        }
+                    
+                        svg {
+                          width: 100%;
+                          height: 90%;
+                          background-color: #fff;
+                        }
+                    
+                        #controls {
+                          width: 160px;
+                          margin-left: 20px;
+                          background: #dff8ff;
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          padding: 20px 10px;
+                          border-radius: 20px;
+                          box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+                        }
+                    
+                        button {
+                          width: 120px;
+                          height: 50px;
+                          margin: 10px 0;
+                          font-size: 18px;
+                          font-weight: bold;
+                          color: white;
+                          border: none;
+                          border-radius: 12px;
+                          cursor: pointer;
+                          transition: 0.3s ease;
+                        }
+                    
+                        #addLine {
+                          background-color: #4caf50;
+                        }
+                    
+                        #reset {
+                          background-color: #f44336;
+                        }
+                    
+                        button:hover {
+                          opacity: 0.8;
+                        }
+                    
+                        .container {
+                          display: flex;
+                          align-items: center;
+                        }
+
+                        .diagonal-text {
+                           position: absolute;
+                           transform: rotate(-45deg) translate(-50%, 50%);
+                           transform-origin: bottom left;
+                           font-size: 20px;
+                           font-weight: bold;
+                           color: #333;
+                           margin-top: 20%;
+                           margin-left: 52%;
+                           color: rgb(143, 51, 228);
+                        }
+                      </style>
+                    </head>
+                    <body>
+                      <div class="container">
+                        <div id="graph-container">
+                          <div class="diagonal-text">Opportunities</div>  
+                          <div class="y-axis" style="writing-mode: vertical-lr; transform: rotate(180deg); text-orientation: mixed; margin-top: 30%; position: absolute; margin-left: 21%; color: #4caf50;">Ability</div>
+                          <div class="y-axis" style="writing-mode: vertical-lr; transform: rotate(180deg); text-orientation: mixed; margin-top: 10%; position: absolute; margin-left: 20%; color: #f44336;">potential</div>
+                          <div class="x-axis" style="margin-top: 55%; margin-left: 40%; position: absolute; color: #4caf50;">Biased</div>
+                          <div class="x-axis" style="margin-top: 55%; margin-left: 60%; position: absolute; color: #f44336;">Unbiased</div>
+                          <div class="x-axis" style="margin-top: 58%; margin-left: 50%; position: absolute;">Interest</div>
+                          <svg id="graph"></svg>
+                        </div>
+                        <div id="controls">
+                          <button id="addLine">Add Line</button>
+                          <button id="reset">Reset</button>
+                        </div>
+                      </div>
+                    
+                      <script>
+                        const svg = document.getElementById("graph");
+                        const padding = 50;
+                        const size = 500;
+                        const scale = (size - padding * 2) / 10; // Each unit = space for 1 to 10
+                        const origin = { x: padding, y: size - padding };
+                    
+                        let lines = [];
+                        const colors = ["#ff4081", "#29b6f6", "#66bb6a", "#ffb74d", "#ab47bc", "#ffa726"];
+                        let colorIndex = 0;
+                    
+                        svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+                    
+                        function toGraphX(val) {
+                          return origin.x + val * scale;
+                        }
+                    
+                        function toGraphY(val) {
+                          return origin.y - val * scale;
+                        }
+                    
+                        function createConstantLine() {
+                          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                          line.setAttribute("stroke", "#000");
+                          line.setAttribute("stroke-width", 2);
+                          line.setAttribute("stroke-dasharray", "6,4");
+                          line.setAttribute("x1", toGraphX(1));
+                          line.setAttribute("y1", toGraphY(1));
+                          line.setAttribute("x2", toGraphX(10));
+                          line.setAttribute("y2", toGraphY(10));
+                          svg.appendChild(line);
+                        }
+                    
+                        function createLine() {
+                          const color = colors[colorIndex++ % colors.length];
+                          const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    
+                          let pointX = createDraggableCircle(toGraphX(2), toGraphY(0), color, true); // on x-axis
+                          let pointY = createDraggableCircle(toGraphX(0), toGraphY(2), color, false); // on y-axis
+                    
+                          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                          line.setAttribute("stroke", color);
+                          line.setAttribute("stroke-width", 3);
+                          group.appendChild(line);
+                    
+                          function updateLine() {
+                            line.setAttribute("x1", pointX.cx);
+                            line.setAttribute("y1", pointX.cy);
+                            line.setAttribute("x2", pointY.cx);
+                            line.setAttribute("y2", pointY.cy);
+                          }
+                    
+                          pointX.onMove = updateLine;
+                          pointY.onMove = updateLine;
+                    
+                          updateLine();
+                    
+                          group.appendChild(pointX.el);
+                          group.appendChild(pointY.el);
+                          svg.appendChild(group);
+                          lines.push(group);
+                        }
+                    
+                        function createDraggableCircle(x, y, color, lockY) {
+                          const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                          circle.setAttribute("r", 10);
+                          circle.setAttribute("fill", color);
+                          circle.setAttribute("stroke", "#333");
+                          circle.setAttribute("stroke-width", "2");
+                    
+                          const state = { cx: x, cy: y, el: circle, onMove: () => {} };
+                          update();
+                    
+                          let dragging = false;
+                    
+                          circle.addEventListener("mousedown", () => {
+                            dragging = true;
+                          });
+                    
+                          svg.addEventListener("mousemove", (e) => {
+                            if (dragging) {
+                              const pt = svg.createSVGPoint();
+                              pt.x = e.clientX;
+                              pt.y = e.clientY;
+                              const cursor = pt.matrixTransform(svg.getScreenCTM().inverse());
+                    
+                              if (lockY) {
+                                state.cx = Math.min(toGraphX(10), Math.max(toGraphX(1), cursor.x));
+                              } else {
+                                state.cy = Math.min(toGraphY(1), Math.max(toGraphY(10), cursor.y));
+                              }
+                              update();
+                              state.onMove();
+                            }
+                          });
+                    
+                          window.addEventListener("mouseup", () => {
+                            dragging = false;
+                          });
+                    
+                          function update() {
+                            circle.setAttribute("cx", state.cx);
+                            circle.setAttribute("cy", state.cy);
+                          }
+                    
+                          return state;
+                        }
+                    
+                        function drawAxes() {
+                          // X axis
+                          const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                          xAxis.setAttribute("x1", toGraphX(0));
+                          xAxis.setAttribute("y1", toGraphY(0));
+                          xAxis.setAttribute("x2", toGraphX(10.5));
+                          xAxis.setAttribute("y2", toGraphY(0));
+                          xAxis.setAttribute("stroke", "#999");
+                          xAxis.setAttribute("stroke-width", 2);
+                          svg.appendChild(xAxis);
+                    
+                          // Y axis
+                          const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                          yAxis.setAttribute("x1", toGraphX(0));
+                          yAxis.setAttribute("y1", toGraphY(0));
+                          yAxis.setAttribute("x2", toGraphX(0));
+                          yAxis.setAttribute("y2", toGraphY(10.5));
+                          yAxis.setAttribute("stroke", "#999");
+                          yAxis.setAttribute("stroke-width", 2);
+                          svg.appendChild(yAxis);
+                    
+                          // Tick marks
+                          for (let i = 1; i <= 10; i++) {
+                            // X ticks
+                            let tickX = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                            tickX.setAttribute("x", toGraphX(i) - 6);
+                            tickX.setAttribute("y", toGraphY(0) + 20);
+                            tickX.textContent = i;
+                            tickX.setAttribute("fill", "#555");
+                            tickX.setAttribute("font-size", "12px");
+                            svg.appendChild(tickX);
+                    
+                            // Y ticks
+                            let tickY = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                            tickY.setAttribute("x", toGraphX(0) - 20);
+                            tickY.setAttribute("y", toGraphY(i) + 5);
+                            tickY.textContent = i;
+                            tickY.setAttribute("fill", "#555");
+                            tickY.setAttribute("font-size", "12px");
+                            svg.appendChild(tickY);
+                          }
+                        }
+                    
+                        function resetLines() {
+                          for (const line of lines) {
+                            svg.removeChild(line);
+                          }
+                          lines = [];
+                          colorIndex = 0;
+                        }
+                    
+                        document.getElementById("addLine").addEventListener("click", createLine);
+                        document.getElementById("reset").addEventListener("click", resetLines);
+                    
+                        drawAxes();
+                        createConstantLine();
+                      </script>
+                    </body>
+                    </html>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../statics/scripts.js"></script>
+</body>
+</html>

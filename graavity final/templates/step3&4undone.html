@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity CBC</title>
+    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../statics/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="main-wrap">
+        <header class="main-head">
+            <div class="main-nav">
+                <nav class="navbar">
+                    <div class="navbar-nav">
+                        <div class="title">
+                            <h3>
+                                <i><img src="../statics/img/logo.png" alt="App Icon" style="width:35px; height:35px;"></i>
+                               <span class="title-text">GravityCBC</span>
+                            </h3>   
+                           </div>
+                           <ul class="nav-list">
+                            <li class="nav-list-item">
+                                <a href="../templates/index.html" class="nav-link">
+                                    <i><i class="fa-solid fa-landmark"></i></i>
+                                    <span class="link-text">Pathways</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step1.html" class="nav-link">
+                                    <i<i class="fa-solid fa-1"></i></i>
+                                    <span class="link-text">STEP 1</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step2.html" class="nav-link">
+                                    <i><i class="fa-solid fa-2"></i></i>
+                                    <span class="link-text">STEP 2</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step3&4.html" class="nav-link">
+                                    <i><i class="fa-solid fa-3"></i></i>
+                                    <span class="link-text">STEP 3&4</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../templates/step5.html" class="nav-link">
+                                    <i><i class="fa-solid fa-5"></i></i>
+                                    <span class="link-text">STEP 5</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                             <a href="../templates/step6.html" class="nav-link">
+                                 <i><i class="fa-solid fa-6"></i></i>
+                                 <span class="link-text">STEP 6</span>
+                             </a>
+                         </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="showcase">
+            <div class="overlay">
+                <div class="head">
+                    <button class="toggler">
+                        <i><i class="fa-solid fa-bars"></i></i>
+                    </button>
+                </div>
+                <div class="show">
+                    <div class="top-bar">
+                        <button onclick="filterByPathway('STEM')">🔬 STEM</button>
+                        <button onclick="filterByPathway('Social Sciences')">🌍 Social Sciences</button>
+                        <button onclick="filterByPathway('Arts & Sports')">🎨 Arts & Sports</button>
+                        <button onclick="filterByPathway('All')">🔁 Show All</button>
+                    </div>
+                    <div class="container">
+                        <div class="left">
+                          <h2>🎓 Learning Areas</h2>
+                          <div class="instruction">Click a learning area to see which careers it connects to!</div>
+                          <ul id="learningAreaList" class="item-list">
+                            <li class="mycareers" data-careers="Music Production Professional, Performance & Arts Education Professional" data-pathway="Arts & Sports">Music & Dance</li>
+                            <li class="mycareers" data-careers="Fine Artist, Arts and Design Professional" data-pathway="Arts & Sports">Fine Art</li>
+                            <li class="mycareers" data-careers="Onscreen and Onstage Storytelling Professional" data-pathway="Arts & Sports">Theatre and film</li>
+                            <li class="mycareers" data-careers="Media Production Professional, Journalism Professional" data-pathway="Social Sciences">Media Technology</li>
+                            <li class="mycareers" data-careers="Software & System Development Professional, Graphic Design Professional" data-pathway="STEM">Computer Studies</li>
+                            <li class="mycareers" data-careers="Ball Games Professional, Sports Management Professional" data-pathway="Arts & Sports">Sports & Recreation</li>
+                            <li class="mycareers" data-careers="Sports & Wellness Professional" data-pathway="Arts & Sports">Physical Education</li>
+                            <li class="mycareers" data-careers="Onstage & Onscreen Storytelling Professional" data-pathway="Arts & Sports">Theatre & Film</li>
+                            <li class="mycareers" data-careers="Engineering Professional, Data Analyst" data-pathway="STEM">Mathematics</li>
+                            <li class="mycareers" data-careers="Social Worker, Historian" data-pathway="Social Sciences">History & Government</li>
+                            <li class="mycareers" data-careers="Medical Professional, Health Science Professional, Pharmaceutical & Biomedical Professional" data-pathway="STEM">Biology</li>
+                            <li class="mycareers" data-careers="Medical Professional, Health Science Professional, Pharmaceutical & Biomedical Professional" data-pathway="STEM">Physics</li>
+                                
+                          </ul>
+                        </div>
+                    
+                        <div class="right">
+                          <h2>💼 Suggested Careers</h2>
+                          <div class="instruction">Click a career to see which subjects can lead to it!</div>
+                          <ul id="careerList" class="item-list">
+                            <li class="mycareers" data-learning="Music & Dance" data-pathway="Arts & Sports">Music Production Professional</li>
+                            <li class="mycareers" data-learning="Music & Dance" data-pathway="Arts & Sports">Performance & Arts Education Professional</li>
+                            <li class="mycareers" data-learning="Fine Art" data-pathway="Arts & Sports">Fine Artist</li>
+                            <li class="mycareers" data-learning="Theatre and film" data-pathway="Arts & Sports">Onscreen and Onstage Storytelling Professional</li>
+                            <li class="mycareers" data-learning="Fine Art" data-pathway="Arts & Sports">Arts and Design Professional</li>
+                            <li class="mycareers" data-learning="Media Technology" data-pathway="Social Sciences">Media Production Professional</li>
+                            <li class="mycareers" data-learning="Media Technology" data-pathway="Social Sciences">Journalism Professional</li>
+                            <li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="STEM">Software & System Development Professional</li>
+                            <li class="mycareers" data-learning="Computer Studies" data-pathway="STEM">Graphic Design Professional</li>
+                            <li class="mycareers" data-learning="Mathematics" data-pathway="STEM">Data Analyst</li>
+                            <li class="mycareers" data-learning="Mathematics" data-pathway="STEM">Engineering Professional</li>
+                            <li class="mycareers" data-learning="History & Government" data-pathway="Social Sciences">Social Worker</li>
+                            <li class="mycareers" data-learning="History & Government" data-pathway="Social Sciences">Historian</li>
+                            <li class="mycareers" data-learning="Sports & Recreation" data-pathway="Arts & Sports">Ball Games Professional</li>
+                            <li class="mycareers" data-learning="Physical Education" data-pathway="Arts & Sports">Sports & Wellness Professional</li>
+                            <li class="mycareers" data-learning="Theatre & Film" data-pathway="Arts & Sports">Onstage & Onscreen Storytelling Professional</li>
+                          </ul>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../statics/scripts.js"></script>
+
+    <script>
+        const careers = document.querySelectorAll('#careerList .mycareers');
+        const learningAreas = document.querySelectorAll('#learningAreaList .mycareers');
+    
+        function clearGlows() {
+          careers.forEach(c => c.classList.remove('glow'));
+          learningAreas.forEach(l => l.classList.remove('glow'));
+        }
+    
+        careers.forEach(career => {
+          career.addEventListener('click', function () {
+            clearGlows();
+            this.classList.add('glow');
+            const learningText = this.getAttribute('data-learning').split(',').map(l => l.trim());
+            learningAreas.forEach(area => {
+              if (learningText.includes(area.textContent)) {
+                area.classList.add('glow');
+              }
+            });
+          });
+        });
+    
+        learningAreas.forEach(area => {
+          area.addEventListener('click', function () {
+            clearGlows();
+            this.classList.add('glow');
+            const careerText = this.getAttribute('data-careers').split(',').map(c => c.trim());
+            careers.forEach(career => {
+              if (careerText.includes(career.textContent)) {
+                career.classList.add('glow');
+              }
+            });
+          });
+        });
+    
+        function filterByPathway(pathway) {
+          learningAreas.forEach(area => {
+            area.classList.toggle('hidden', pathway !== 'All' && area.dataset.pathway !== pathway);
+          });
+    
+          careers.forEach(career => {
+            career.classList.toggle('hidden', pathway !== 'All' && career.dataset.pathway !== pathway);
+          });
+    
+          clearGlows();
+        }
+      </script>
+    
+</body>
+</html>
