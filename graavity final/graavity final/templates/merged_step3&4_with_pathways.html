@@ -1,0 +1,1804 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Learning Areas → Careers (Interactive)</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f172a;
+      --accent-2: #0ea5a4;
+      --glass: rgba(15, 23, 42, 0.04);
+    }
+
+    html,
+    body {
+      height: 90%;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    }
+
+    body {
+      background: linear-gradient(180deg, #eef2ff00 0%, #f7f8fb00 100%);
+      color: var(--accent);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1200px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 18px 24px;
+      border-bottom: 1px solid #eef2f6;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .top-controls {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--glass);
+      border: 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 22px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95));
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 4px 18px rgba(2, 6, 23, 0.04);
+    }
+
+    .left {
+      flex: 0 0 320px;
+      max-height: 68vh;
+      overflow: auto;
+    }
+
+    .right {
+      flex: 1 1 600px;
+      max-height: 68vh;
+      overflow: auto;
+      min-width: none;
+      position: fixed;
+      margin-left: 40%;
+    }
+
+    h2 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+    }
+
+    .instruction {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    ul.list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: block;
+    }
+
+    li.learning,
+    li.career-item {
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      transition: all .12s;
+      border: 1px solid transparent;
+    }
+
+    li.learning:hover,
+    li.career-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(12, 22, 40, 0.06);
+      border-color: rgba(2, 6, 23, 0.06);
+      background: #fff;
+    }
+
+    li.learning[aria-selected="true"] {
+      background: linear-gradient(90deg, #f0f9ff, #fff);
+      border-color: rgba(14, 165, 164, 0.12);
+      box-shadow: 0 8px 28px rgba(14, 165, 164, 0.06);
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 18px;
+      border-radius: 8px;
+      background: #fbfdff;
+      border: 1px dashed #e6eef0;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      display: none;
+      max-width: 320px;
+      background: #0b1220;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 8px 30px rgba(2, 6, 23, 0.3);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal {
+      width: min(720px, 94%);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 18px 50px rgba(2, 6, 23, 0.4);
+    }
+
+    .modal h3 {
+      margin: 0 0 8px 0;
+    }
+
+    .modal .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--glass);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin: 6px 6px 0 0;
+    }
+
+    .close-btn {
+      margin-left: auto;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+
+    /*the colllapse*/
+    /* --- Layout --- */
+
+
+    /* --- Titles --- */
+    .panel h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .instruction {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    /* --- Pathway Items --- */
+    .pathway-title {
+      padding: 10px;
+      background: #dabe62;
+      margin-bottom: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .track-title {
+      padding: 10px;
+      background: #0866f3;
+      margin-bottom: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .pathway-title:hover {
+      background: #d49a26;
+    }
+
+    .track-title:hover {
+      background: #5c7db5;
+    }
+
+    /* --- Hidden Elements --- */
+    .hidden {
+      display: none;
+    }
+
+    /* --- Lists --- */
+    .learning-list,
+    .track-list {
+      margin-left: 15px;
+      padding-left: 10px;
+      border-left: 2px solid #ddd;
+    }
+
+    .learning {
+      padding: 7px 10px;
+      margin: 3px 0;
+      background: #fafafa;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .learning:hover {
+      background: #e9f2ff;
+    }
+
+    /* --- Right Panel Careers --- */
+    #careerList h3 {
+      margin-bottom: 10px;
+    }
+
+    #careerList ul li {
+      margin: 5px 0;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <div class="wrap" role="application" aria-label="Learning areas to careers">
+    <header>
+      <!--Search Facility-->
+      <!DOCTYPE html>
+      <html>
+
+      <head>
+        <meta charset="UTF-8">
+        <title>Search Elements in Page</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+          }
+
+          #searchBox {
+            margin-left: 20%;
+            padding: 5px;
+            width: 200px;
+          }
+
+          #searchButton {
+            padding: 5px 10px;
+            margin-left: 5px;
+            background-color: #208537;
+            border-style: none;
+            border-radius: 10%;
+            color: #f0f9ff;
+          }
+
+          #clearButton {
+            padding: 5px 10px;
+          }
+
+          .highlight {
+            background-color: yellow;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <input type="text" id="searchBox" placeholder="Type to search...">
+        <button id="searchButton">Search</button>
+        <button id="clearButton">Clear</button>
+
+        <script>
+          document.getElementById("searchButton").addEventListener("click", function () {
+            let searchValue = document.getElementById("searchBox").value.toLowerCase();
+            let paragraphs = document.querySelectorAll(".left .learning");
+
+            paragraphs.forEach(p => {
+              let text = p.textContent.toLowerCase();
+              p.classList.remove("highlight");
+
+              if (searchValue && text.includes(searchValue)) {
+                p.style.display = "";
+                p.classList.add("highlight");
+              } else if (searchValue) {
+                p.style.display = "none";
+              } else {
+                p.style.display = "";
+              }
+            });
+          });
+
+          document.getElementById('searchBox').addEventListener('keyup', function (e) {
+            if (e.key === 'Enter') document.getElementById('searchButton').click();
+          });
+
+          document.getElementById("clearButton").addEventListener("click", function () {
+            document.getElementById("searchBox").value = "";
+            let paragraphs = document.querySelectorAll(".left .learning");
+            paragraphs.forEach(p => {
+              p.style.display = "";
+              p.classList.remove("highlight");
+            });
+          });
+        </script>
+
+      </body>
+
+      </html>
+      <div class="top-controls">
+        <button class="btn" id="showAll">Show All Learning Areas</button>
+        <button class="btn" id="clearSelection">Clear Selection</button>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="panel left" aria-label="learning areas panel">
+        <h2>🎓 Subjects</h2>
+        <div class="instruction">Click a learning area to load related careers on the right.</div>
+
+        <ul class="list" id="learningAreaList" role="list">
+          <ul id="pathwayList">
+
+            <!-- ⭐ STEM PATHWAY -->
+            <li class="pathway">
+              <div class="pathway-title">STEM</div>
+              <ul class="track-list hidden">
+
+                <!-- Pure Sciences -->
+                <li class="track">
+                  <div class="track-title">Pure Sciences</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Biology">Biology</li>
+                    <li class="learning" data-area="Chemistry">Chemistry</li>
+                    <li class="learning" data-area="Physics">Physics</li>
+                  </ul>
+                </li>
+
+                <!-- Applied Sciences -->
+                <li class="track">
+                  <div class="track-title">Applied Sciences</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Computer Studies">Computer Studies</li>
+                    <li class="learning" data-area="Agriculture">Agriculture</li>
+                    <li class="learning" data-area="Home Science">Home Science</li>
+                  </ul>
+                </li>
+
+                <!-- Technical & Industrial Education -->
+                <li class="track">
+                  <div class="track-title">Technical & Industrial</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Building & Construction">Building & Construction</li>
+                    <li class="learning" data-area="Electricity">Electricity</li>
+                    <li class="learning" data-area="Power Mechanics">Power Mechanics</li>
+                    <li class="learning" data-area="Wood Work">Wood Work</li>
+                    <li class="learning" data-area="Metal Work">Metal Work</li>
+                    <li class="learning" data-area="Aviation Technology">Aviation</li>
+                    <li class="learning" data-area="Marine & Fisheries">Marine & Fisheries</li>
+                    <li class="learning" data-area="Media Technology">Media Technology</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
+
+
+            <!-- ⭐ SOCIAL SCIENCES PATHWAY -->
+            <li class="pathway">
+              <div class="pathway-title">Social Sciences</div>
+              <ul class="track-list hidden">
+
+                <!-- Business & Humanities -->
+                <li class="track">
+                  <div class="track-title">Humanities & Business</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Business Studies">Business Studies</li>
+                    <li class="learning" data-area="Geography">Geography</li>
+                    <li class="learning" data-area="Christian Religious Education"> Christian Religious Education</li>
+                    <li class="learning" data-area="Islamic Religious Education">Islamic Religious Education</li>
+                    <li class="learning" data-area="Hindu Religious Education">Hindu Religious Education</li>
+                
+                  </ul>
+                </li>
+
+                <!-- Languages & Literature -->
+                <li class="track">
+                  <div class="track-title">Languages and Literature</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="English">English</li>
+                    <li class="learning" data-area="Kiswahili">Kiswahili</li>
+                    <li class="learning" data-area="French">French</li>
+                    <li class="learning" data-area="German">German</li>
+                    <li class="learning" data-area="Arabic">Arabic</li>
+                    <li class="learning" data-area="Mandarin Chinese">Mandarin Chinese</li>
+                    <li class="learning" data-area="Sign Language">Sign Language</li>
+                    <li class="learning" data-area="Indigenous Languages">Indigenous Languages</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
+
+
+            <!-- ⭐ ARTS & SPORTS PATHWAY -->
+            <li class="pathway">
+              <div class="pathway-title">Arts & Sports</div>
+              <ul class="track-list hidden">
+
+                <!-- Arts -->
+                <li class="track">
+                  <div class="track-title">Arts</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Music & Dance">Music & Dance</li>
+                    <li class="learning" data-area="Fine Art">Fine Arts</li>
+                    <li class="learning" data-area="Theatre & Film">Theatre & Film</li>
+                  </ul>
+                </li>
+
+                <!-- Sports -->
+                <li class="track">
+                  <div class="track-title">Sports</div>
+                  <ul class="learning-list hidden">
+                    <li class="learning" data-area="Sports & Recreation">Sports & Recreation</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+        </ul>
+      </div>
+
+      <div class="panel right" aria-label="careers panel">
+        <h2>💼 Careers Options</h2>
+        <div class="instruction">Click a learning area to populate careers.</div>
+        <div id="careerContainer">
+          <div class="empty" id="emptyHint">Select a learning area on the left to view related careers.</div>
+          <ul class="list" id="careerList" role="list" style="margin-top:6px;"></ul>
+        </div>
+        <div class="meta" id="metaInfo">Tip: Hover a career for a short description. Click a career for full profile.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <h3 id="modalTitle">Career Title</h3>
+        <button class="close-btn" id="modalClose" title="Close">✕</button>
+      </div>
+      <p id="modalShort" style="margin:6px 0 12px;color:var(--muted);"></p>
+      <div class="row">
+        <div style="flex:1 1 240px;">
+          <strong>Core skills</strong>
+          <div id="modalSkills" style="margin-top:8px;"></div>
+        </div>
+        <div style="flex:1 1 240px;">
+          <strong>Recommended subjects</strong>
+          <div id="modalSubjects" style="margin-top:8px;"></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <strong>Extra info</strong>
+        <p id="modalExtra" style="color:var(--muted); margin-top:6px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* CAREER DATABASE - add / edit freely.
+       Keys must match the data-area text of the left list exactly.
+       Each career: { title, short, skills:[], subjects:[], extra, pathway }
+    */
+    const CAREER_MAP = {
+      "Music & Dance": [
+        {
+          title: "Music Producer", short: "Creates, records & arranges music for artists and media.",
+          skills: ["Audio editing", "Music theory", "DAW usage"], subjects: ["Music & Dance", "Media Technology"], extra: "Works in studios; can freelance or work with labels.", pathway: "Arts & Sports"
+        },
+        { title: "Performing Artist", short: "Performs live music, dance or theatre.", skills: ["Stagecraft", "Vocal technique", "Choreography"], subjects: ["Music & Dance", "Physical Education"], extra: "Requires auditions and continuous practice.", pathway: "Arts & Sports" },
+        { title: "Sound Engineer", short: "Handles recording & live sound mixing.", skills: ["Mixing", "Mic placement", "Signal flow"], subjects: ["Music & Dance", "Physics"], extra: "Technical role often in studios and events.", pathway: "STEM" }
+      ],
+      "Fine Art": [
+        { title: "Fine Artist", short: "Creates original visual artwork for galleries and sale.", skills: ["Painting", "Composition", "Portfolio building"], subjects: ["Fine Art", "Literature"], extra: "Often freelance; strong portfolio needed.", pathway: "Arts & Sports" },
+        { title: "Illustrator", short: "Produces artwork for books, advertising and web.", skills: ["Drawing", "Digital illustration", "Client communication"], subjects: ["Fine Art", "Computer Studies"], extra: "Can work in publishing, advertising and games.", pathway: "Arts & Sports" },
+        { title: "Animator", short: "Produces 2D/3D animation for media.", skills: ["Animation", "Storyboarding", "Software (Blender/After Effects)"], subjects: ["Fine Art", "Computer Studies"], extra: "Growing demand in games, film & advertising.", pathway: "STEM" }
+      ],
+      "Media Technology": [
+        { title: "Journalist", short: "Researches and writes news stories.", skills: ["Writing", "Research", "Interviewing"], subjects: ["English", "Media Technology"], extra: "Works in print, broadcast, or online media.", pathway: "Social Sciences" },
+        { title: "Video Producer", short: "Plans and produces video content for media.", skills: ["Production", "Editing", "Project mgmt"], subjects: ["Media Technology", "Computer Studies"], extra: "Often works with brands, newsrooms or agencies.", pathway: "STEM" },
+        { title: "Broadcast Technician", short: "Runs broadcast equipment and signal chains.", skills: ["Technical setup", "Troubleshooting"], subjects: ["Media Technology", "Physics"], extra: "Works in radio/TV live production.", pathway: "STEM" }
+      ],
+      "Computer Studies": [
+        { title: "Software Developer", short: "Designs and builds software and apps.", skills: ["Programming", "Problem solving", "Version control"], subjects: ["Computer Studies", "Mathematics"], extra: "High demand; many specialization paths.", pathway: "STEM" },
+        { title: "Data Analyst", short: "Processes and interprets data to guide decisions.", skills: ["Data cleaning", "Statistics", "SQL"], subjects: ["Mathematics", "Computer Studies"], extra: "Used in business, health, government.", pathway: "STEM" },
+        { title: "Cybersecurity Analyst", short: "Defends systems against cyber threats.", skills: ["Network security", "Forensics", "Security tools"], subjects: ["Computer Studies", "Physics"], extra: "High-growth field with certifications.", pathway: "STEM" },
+        { title: "UI/UX Designer", short: "Designs user-friendly interfaces & experiences.", skills: ["Prototyping", "User research", "Visual design"], subjects: ["Computer Studies", "Fine Art"], extra: "Bridges design and engineering.", pathway: "Arts & Sports" }
+      ],
+      "Sports & Recreation": [
+        { title: "Sports Coach", short: "Trains athletes and develops teams.", skills: ["Coaching", "Motivation", "Tactical knowledge"], subjects: ["Physical Education", "Biology"], extra: "Often requires certification and experience.", pathway: "Arts & Sports" },
+        { title: "Sports Management Professional", short: "Runs sports organisations and events.", skills: ["Management", "Marketing", "Finance"], subjects: ["Business Studies", "Physical Education"], extra: "Works in clubs, federations or agencies.", pathway: "Social Sciences" },
+        { title: "Physiotherapist", short: "Treats sports injuries & rehabilitation.", skills: ["Anatomy", "Therapy plan", "Patient care"], subjects: ["Biology", "Physical Education"], extra: "Requires professional training & licensure.", pathway: "STEM" }
+      ],
+      "Physical Education": [
+        { title: "Physical Education Teacher", short: "Teaches PE and promotes fitness in schools.", skills: ["Instruction", "Motivation", "Safety"], subjects: ["Physical Education", "Biology"], extra: "Often a school-based role requiring certification.", pathway: "Arts & Sports" },
+        { title: "Wellness Coach", short: "Designs health & fitness programs for clients.", skills: ["Nutrition basics", "Exercise planning"], subjects: ["Home Science", "Biology"], extra: "Can work independently or with gyms.", pathway: "STEM" }
+      ],
+      "Theatre & Film": [
+        { title: "Actor/Actress", short: "Performs roles in theatre, TV or film.", skills: ["Acting", "Voice control", "Auditioning"], subjects: ["Theatre & Film", "English"], extra: "Highly competitive; often freelance.", pathway: "Arts & Sports" },
+        { title: "Film Director", short: "Leads the creative vision of a film project.", skills: ["Storytelling", "Leadership", "Production knowledge"], subjects: ["Media Technology", "Theatre & Film"], extra: "Requires experience and strong portfolio.", pathway: "Arts & Sports" },
+        { title: "Scriptwriter", short: "Writes scripts for film, TV, and theatre.", skills: ["Story structure", "Dialogue", "Editing"], subjects: ["English", "Theatre & Film"], extra: "Multiple routes: freelance or studio work.", pathway: "Arts & Sports" }
+      ],
+      "Biology": [
+        { title: "Doctor", short: "Diagnoses and treats patients in clinical settings.", skills: ["Clinical reasoning", "Patient care", "Ethics"], subjects: ["Biology", "Chemistry"], extra: "Requires medical school and licensing.", pathway: "STEM" },
+        { title: "Laboratory Scientist", short: "Performs lab tests and research experiments.", skills: ["Lab techniques", "Data recording", "Quality control"], subjects: ["Biology", "Chemistry"], extra: "Works in hospitals, research labs, industry.", pathway: "STEM" },
+
+        {
+          title: "Doctor",
+          short: "Diagnoses and treats patients in clinical settings.",
+          skills: ["Clinical reasoning", "Patient care", "Ethics"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Requires medical school and licensing.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Laboratory Scientist",
+          short: "Performs lab tests and research experiments.",
+          skills: ["Lab techniques", "Data recording", "Quality control"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Works in hospitals, research labs, and industry.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Nurse",
+          short: "Provides patient care, monitoring, and treatment support.",
+          skills: ["Patient care", "Medical procedures", "Communication"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Requires nursing school or diploma.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Pharmacist",
+          short: "Dispenses medication and advises on drug safety.",
+          skills: ["Drug knowledge", "Precision", "Patient counseling"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Requires a pharmacy degree and licensing.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Veterinarian",
+          short: "Diagnoses and treats animals.",
+          skills: ["Animal care", "Surgery", "Clinical assessment"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Requires veterinary medical training.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Nutritionist",
+          short: "Advises clients on diet and health.",
+          skills: ["Diet planning", "Research", "Consultation"],
+          subjects: ["Biology", "Home Science"],
+          extra: "Works in hospitals, wellness centers, and sports teams.",
+          pathway: "Health & Wellness"
+        },
+
+        {
+          title: "Biotechnologist",
+          short: "Uses biological systems to create products and innovations.",
+          skills: ["Genetics", "Lab techniques", "Problem-solving"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Heavily used in agriculture, medicine, and industry.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Microbiologist",
+          short: "Studies microorganisms like bacteria and viruses.",
+          skills: ["Microscopy", "Data analysis", "Research"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Essential in health, food safety, and environmental monitoring.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Environmental Scientist",
+          short: "Analyzes environmental issues and proposes solutions.",
+          skills: ["Field research", "Data analysis", "Reporting"],
+          subjects: ["Biology", "Geography"],
+          extra: "Works with conservation agencies and government bodies.",
+          pathway: "Environmental"
+        },
+
+        {
+          title: "Forensic Scientist",
+          short: "Analyzes biological evidence for criminal cases.",
+          skills: ["DNA analysis", "Attention to detail", "Lab investigation"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Works with law enforcement and crime labs.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Marine Biologist",
+          short: "Studies marine animals and ocean ecosystems.",
+          skills: ["Diving", "Data collection", "Ecosystem analysis"],
+          subjects: ["Biology", "Geography"],
+          extra: "Often works with research institutes and conservation groups.",
+          pathway: "Environmental"
+        },
+
+        {
+          title: "Zoologist",
+          short: "Studies animal behavior and physiology.",
+          skills: ["Field research", "Animal handling", "Data collection"],
+          subjects: ["Biology"],
+          extra: "Works in wildlife reserves and research centers.",
+          pathway: "Environmental"
+        },
+
+        {
+          title: "Agricultural Scientist",
+          short: "Improves crop production and farming systems.",
+          skills: ["Soil testing", "Plant biology", "Field experiments"],
+          subjects: ["Biology", "Agriculture"],
+          extra: "Critical for food security and modern farming innovations.",
+          pathway: "Agriculture"
+        },
+
+        {
+          title: "Food Technologist",
+          short: "Ensures food safety and develops new food products.",
+          skills: ["Quality control", "Microbiology", "Product development"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Works in factories, labs, and regulatory bodies.",
+          pathway: "Industry"
+        },
+
+        {
+          title: "Public Health Officer",
+          short: "Works on disease prevention and community health programs.",
+          skills: ["Data collection", "Health education", "Field surveillance"],
+          subjects: ["Biology", "Chemistry"],
+          extra: "Often employed by government health departments.",
+          pathway: "Health & Community"
+        },
+        { title: "Environmental Biologist", short: "Studies organisms and ecosystems.", skills: ["Fieldwork", "Data analysis", "Report writing"], subjects: ["Biology", "Geography"], extra: "Often works with NGOs or research bodies.", pathway: "STEM" }
+      ],
+      "Chemistry":
+        [
+          {
+            title: "Chemist",
+            short: "Conducts chemical research, analysis, and experiments.",
+            skills: ["Analytical skills", "Lab techniques", "Problem-solving"],
+            subjects: ["Chemistry", "Mathematics"],
+            extra: "Works in laboratories, manufacturing, and product development.",
+            pathway: "STEM"
+          },
+
+          {
+            title: "Chemical Engineer",
+            short: "Designs processes for manufacturing chemicals and materials.",
+            skills: ["Process design", "Math", "Engineering analysis"],
+            subjects: ["Chemistry", "Physics", "Mathematics"],
+            extra: "High-paying field in industry, energy, and manufacturing.",
+            pathway: "Engineering"
+          },
+
+          {
+            title: "Pharmacist",
+            short: "Prepares and dispenses medication while advising on drug use.",
+            skills: ["Drug knowledge", "Precision", "Patient consultation"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Requires a pharmacy degree and licensing.",
+            pathway: "Health"
+          },
+
+          {
+            title: "Materials Scientist",
+            short: "Develops new materials like polymers, ceramics, metals, and composites.",
+            skills: ["Research", "Testing", "Material analysis"],
+            subjects: ["Chemistry", "Physics"],
+            extra: "Used in tech, aerospace, electronics, and construction.",
+            pathway: "STEM"
+          },
+
+          {
+            title: "Forensic Scientist",
+            short: "Analyzes chemical evidence for criminal investigations.",
+            skills: ["Toxicology", "Spectroscopy", "Attention to detail"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Works with police, crime labs, and investigative agencies.",
+            pathway: "STEM"
+          },
+
+          {
+            title: "Toxicologist",
+            short: "Studies harmful effects of chemicals, drugs, and toxins.",
+            skills: ["Risk assessment", "Lab analysis", "Research"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Critical in drug testing, environmental safety, and regulation.",
+            pathway: "Health & Science"
+          },
+
+          {
+            title: "Industrial Chemist",
+            short: "Works in large-scale chemical production and quality control.",
+            skills: ["Production control", "Lab analysis", "Process optimization"],
+            subjects: ["Chemistry"],
+            extra: "Common in manufacturing, petroleum, and paint industries.",
+            pathway: "Industry"
+          },
+
+          {
+            title: "Food Technologist",
+            short: "Ensures food quality, safety, and chemical composition.",
+            skills: ["Quality control", "Microbiology", "Testing"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Works in factories, labs, and regulatory bodies.",
+            pathway: "Industry"
+          },
+
+          {
+            title: "Pharmacologist",
+            short: "Studies how drugs interact with biological systems.",
+            skills: ["Research", "Data analysis", "Experimental design"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Essential in drug development and medical testing.",
+            pathway: "Health Research"
+          },
+
+          {
+            title: "Petroleum Technologist",
+            short: "Analyzes petroleum and chemical samples in oil & gas.",
+            skills: ["Sample analysis", "Testing", "Safety control"],
+            subjects: ["Chemistry", "Physics"],
+            extra: "Strong career in oil, gas, and energy sectors.",
+            pathway: "Energy"
+          },
+
+          {
+            title: "Environmental Chemist",
+            short: "Studies pollutants and ensures environmental safety.",
+            skills: ["Field sampling", "Chemical analysis", "Reporting"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Works in environmental agencies and conservation bodies.",
+            pathway: "Environmental"
+          },
+
+          {
+            title: "Water Quality Analyst",
+            short: "Tests water for purity, chemical balance, and safety.",
+            skills: ["Testing", "Lab analysis", "Data reporting"],
+            subjects: ["Chemistry"],
+            extra: "Works in public utilities, labs, and environmental firms.",
+            pathway: "Environmental Health"
+          },
+
+          {
+            title: "Cosmetic Chemist",
+            short: "Formulates skincare, hair, and beauty products.",
+            skills: ["Formulation", "Testing", "Product development"],
+            subjects: ["Chemistry"],
+            extra: "Major role in beauty and personal-care industries.",
+            pathway: "Industry & Innovation"
+          },
+
+          {
+            title: "Quality Control Analyst",
+            short: "Ensures chemical products meet safety and quality standards.",
+            skills: ["Testing", "Documentation", "Attention to detail"],
+            subjects: ["Chemistry"],
+            extra: "Works in manufacturing, pharmaceuticals, and food.",
+            pathway: "Industry"
+          },
+
+          {
+            title: "Pharmaceutical Scientist",
+            short: "Develops and tests new drugs and medicinal compounds.",
+            skills: ["Drug synthesis", "Lab research", "Clinical testing"],
+            subjects: ["Chemistry", "Biology"],
+            extra: "Key in drug research and biotech companies.",
+            pathway: "STEM Research"
+          },
+          { title: "Pharmaceutical Scientist", short: "Develops drugs and drug-delivery systems.", skills: ["Analytical chemistry", "Lab techniques"], subjects: ["Chemistry", "Biology"], extra: "Works in labs, industry & research.", pathway: "STEM" },
+          { title: "Quality Control Chemist", short: "Ensures product chemical quality and safety.", skills: ["Testing", "Standards compliance"], subjects: ["Chemistry", "Mathematics"], extra: "Common in manufacturing and food & pharma.", pathway: "STEM" }
+        ],
+
+      "Physics": [
+        {
+          title: "Chemist",
+          short: "Conducts chemical research, analysis, and experiments.",
+          skills: ["Analytical skills", "Lab techniques", "Problem-solving"],
+          subjects: ["Chemistry", "Mathematics"],
+          extra: "Works in laboratories, manufacturing, and product development.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Chemical Engineer",
+          short: "Designs processes for manufacturing chemicals and materials.",
+          skills: ["Process design", "Math", "Engineering analysis"],
+          subjects: ["Chemistry", "Physics", "Mathematics"],
+          extra: "High-paying field in industry, energy, and manufacturing.",
+          pathway: "Engineering"
+        },
+
+        {
+          title: "Pharmacist",
+          short: "Prepares and dispenses medication while advising on drug use.",
+          skills: ["Drug knowledge", "Precision", "Patient consultation"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Requires a pharmacy degree and licensing.",
+          pathway: "Health"
+        },
+
+        {
+          title: "Materials Scientist",
+          short: "Develops new materials like polymers, ceramics, metals, and composites.",
+          skills: ["Research", "Testing", "Material analysis"],
+          subjects: ["Chemistry", "Physics"],
+          extra: "Used in tech, aerospace, electronics, and construction.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Forensic Scientist",
+          short: "Analyzes chemical evidence for criminal investigations.",
+          skills: ["Toxicology", "Spectroscopy", "Attention to detail"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Works with police, crime labs, and investigative agencies.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Toxicologist",
+          short: "Studies harmful effects of chemicals, drugs, and toxins.",
+          skills: ["Risk assessment", "Lab analysis", "Research"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Critical in drug testing, environmental safety, and regulation.",
+          pathway: "Health & Science"
+        },
+
+        {
+          title: "Industrial Chemist",
+          short: "Works in large-scale chemical production and quality control.",
+          skills: ["Production control", "Lab analysis", "Process optimization"],
+          subjects: ["Chemistry"],
+          extra: "Common in manufacturing, petroleum, and paint industries.",
+          pathway: "Industry"
+        },
+
+        {
+          title: "Food Technologist",
+          short: "Ensures food quality, safety, and chemical composition.",
+          skills: ["Quality control", "Microbiology", "Testing"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Works in factories, labs, and regulatory bodies.",
+          pathway: "Industry"
+        },
+
+        {
+          title: "Pharmacologist",
+          short: "Studies how drugs interact with biological systems.",
+          skills: ["Research", "Data analysis", "Experimental design"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Essential in drug development and medical testing.",
+          pathway: "Health Research"
+        },
+
+        {
+          title: "Petroleum Technologist",
+          short: "Analyzes petroleum and chemical samples in oil & gas.",
+          skills: ["Sample analysis", "Testing", "Safety control"],
+          subjects: ["Chemistry", "Physics"],
+          extra: "Strong career in oil, gas, and energy sectors.",
+          pathway: "Energy"
+        },
+
+        {
+          title: "Environmental Chemist",
+          short: "Studies pollutants and ensures environmental safety.",
+          skills: ["Field sampling", "Chemical analysis", "Reporting"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Works in environmental agencies and conservation bodies.",
+          pathway: "Environmental"
+        },
+
+        {
+          title: "Water Quality Analyst",
+          short: "Tests water for purity, chemical balance, and safety.",
+          skills: ["Testing", "Lab analysis", "Data reporting"],
+          subjects: ["Chemistry"],
+          extra: "Works in public utilities, labs, and environmental firms.",
+          pathway: "Environmental Health"
+        },
+
+        {
+          title: "Cosmetic Chemist",
+          short: "Formulates skincare, hair, and beauty products.",
+          skills: ["Formulation", "Testing", "Product development"],
+          subjects: ["Chemistry"],
+          extra: "Major role in beauty and personal-care industries.",
+          pathway: "Industry & Innovation"
+        },
+
+        {
+          title: "Quality Control Analyst",
+          short: "Ensures chemical products meet safety and quality standards.",
+          skills: ["Testing", "Documentation", "Attention to detail"],
+          subjects: ["Chemistry"],
+          extra: "Works in manufacturing, pharmaceuticals, and food.",
+          pathway: "Industry"
+        },
+
+        {
+          title: "Pharmaceutical Scientist",
+          short: "Develops and tests new drugs and medicinal compounds.",
+          skills: ["Drug synthesis", "Lab research", "Clinical testing"],
+          subjects: ["Chemistry", "Biology"],
+          extra: "Key in drug research and biotech companies.",
+          pathway: "STEM Research"
+        },
+        { title: "Engineer", short: "Applies physics to design machines and structures.", skills: ["Mathematics", "Problem solving", "CAD"], subjects: ["Physics", "Mathematics"], extra: "Many branches: civil, mechanical, electrical.", pathway: "STEM" },
+        { title: "Aerospace Technician", short: "Works on aircraft systems and components.", skills: ["Systems knowledge", "Hands-on repair"], subjects: ["Physics", "Mathematics", "Aviation Technology"], extra: "Often needs vocational training.", pathway: "STEM" }
+      ],
+      "Mathematics": [
+
+        {
+          title: "Mathematician",
+          short: "Solves complex problems and develops mathematical theories.",
+          skills: ["Analytical thinking", "Problem-solving", "Logical reasoning"],
+          subjects: ["Mathematics"],
+          extra: "Often requires advanced degrees for research and academia.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Statistician",
+          short: "Collects, analyzes, and interprets data to inform decisions.",
+          skills: ["Data analysis", "Probability", "Critical thinking"],
+          subjects: ["Mathematics", "Business Studies"],
+          extra: "Works in government, healthcare, finance, and research.",
+          pathway: "STEM"
+        },
+
+        {
+          title: "Actuary",
+          short: "Assesses financial risk using mathematics and statistics.",
+          skills: ["Probability", "Financial modeling", "Critical thinking"],
+          subjects: ["Mathematics", "Business Studies"],
+          extra: "High-paying role in insurance, finance, and risk management.",
+          pathway: "Finance & STEM"
+        },
+
+        {
+          title: "Data Analyst",
+          short: "Interprets data and provides actionable insights.",
+          skills: ["Data visualization", "Statistics", "Excel/SQL"],
+          subjects: ["Mathematics", "Computer Science", "Business Studies"],
+          extra: "Works in business, tech, and research sectors.",
+          pathway: "STEM & Tech"
+        },
+
+        {
+          title: "Data Scientist",
+          short: "Builds models and algorithms to extract insights from big data.",
+          skills: ["Programming", "Machine learning", "Statistics"],
+          subjects: ["Mathematics", "Computer Science", "Business Studies"],
+          extra: "High demand in tech, finance, and research.",
+          pathway: "STEM & Tech"
+        },
+
+        {
+          title: "Operations Research Analyst",
+          short: "Optimizes processes and resource allocation using math models.",
+          skills: ["Mathematical modeling", "Problem-solving", "Statistics"],
+          subjects: ["Mathematics", "Business Studies", "Computer Science"],
+          extra: "Used in logistics, manufacturing, and government planning.",
+          pathway: "STEM & Industry"
+        },
+
+        {
+          title: "Economist",
+          short: "Analyzes economic data to guide policy and business decisions.",
+          skills: ["Statistics", "Data interpretation", "Modeling"],
+          subjects: ["Mathematics", "Business Studies"],
+          extra: "Work in government, finance, and research institutions.",
+          pathway: "Social Sciences & STEM"
+        },
+
+        {
+          title: "Financial Analyst",
+          short: "Assesses investment opportunities using mathematical models.",
+          skills: ["Financial modeling", "Statistics", "Critical thinking"],
+          subjects: ["Mathematics", "Economics"],
+          extra: "Used in banks, investment firms, and corporate finance.",
+          pathway: "Finance & STEM"
+        },
+
+        {
+          title: "Cryptographer",
+          short: "Develops secure communication systems and encryption methods.",
+          skills: ["Mathematics", "Problem-solving", "Coding"],
+          subjects: ["Mathematics", "Computer Science"],
+          extra: "Used in cybersecurity, defense, and finance.",
+          pathway: "STEM & Tech"
+        },
+
+        {
+          title: "Computer Programmer / Software Engineer",
+          short: "Builds software using mathematical logic and algorithms.",
+          skills: ["Programming", "Algorithms", "Logical reasoning"],
+          subjects: ["Mathematics", "Computer Science"],
+          extra: "Mathematics is crucial for optimization and problem-solving.",
+          pathway: "STEM & Tech"
+        },
+
+        {
+          title: "Quantitative Analyst (Quant)",
+          short: "Uses mathematical models for trading and financial risk analysis.",
+          skills: ["Probability", "Statistics", "Programming"],
+          subjects: ["Mathematics", "Statistics", "Economics"],
+          extra: "High-paying role in finance and investment banking.",
+          pathway: "Finance & STEM"
+        },
+
+        {
+          title: "Operations Manager (Analytics Focus)",
+          short: "Improves efficiency using mathematical models and optimization.",
+          skills: ["Mathematical modeling", "Data analysis", "Problem-solving"],
+          subjects: ["Mathematics", "Statistics"],
+          extra: "Often overlaps with industrial engineering and logistics.",
+          pathway: "STEM & Industry"
+        },
+
+        {
+          title: "Actuarial Consultant",
+          short: "Provides advice on risk management and insurance products.",
+          skills: ["Mathematics", "Statistics", "Finance"],
+          subjects: ["Mathematics", "Statistics", "Economics"],
+          extra: "Requires actuarial exams and certifications.",
+          pathway: "Finance & STEM"
+        },
+
+        {
+          title: "Logistician",
+          short: "Optimizes supply chains and resource distribution using math.",
+          skills: ["Optimization", "Mathematical modeling", "Data analysis"],
+          subjects: ["Mathematics", "Statistics"],
+          extra: "Used in shipping, logistics companies, and manufacturing.",
+          pathway: "STEM & Industry"
+        },
+
+        {
+          title: "Mathematics Teacher / Lecturer",
+          short: "Teaches mathematics at schools or universities.",
+          skills: ["Pedagogy", "Communication", "Analytical thinking"],
+          subjects: ["Mathematics"],
+          extra: "Requires teaching certification or advanced degrees for university level.",
+          pathway: "Education & STEM"
+        },
+        { title: "Actuary", short: "Estimates financial risk using maths & stats.", skills: ["Probability", "Modeling", "Excel/R"], subjects: ["Mathematics", "Business Studies"], extra: "Work typically in insurance and finance.", pathway: "Social Sciences" },
+        { title: "Statistician / Data Scientist", short: "Builds statistical models to extract insight.", skills: ["Statistics", "Coding", "Visualization"], subjects: ["Mathematics", "Computer Studies"], extra: "High demand across industries.", pathway: "STEM" }
+      ],
+      "Business Studies": [
+        { title: "Entrepreneur", short: "Starts and grows business ventures.", skills: ["Business planning", "Sales", "Leadership"], subjects: ["Business Studies", "Mathematics"], extra: "High risk, high reward; requires resilience.", pathway: "Social Sciences" },
+        { title: "Marketing Manager", short: "Plans and runs marketing campaigns.", skills: ["Branding", "Digital marketing", "Analytics"], subjects: ["Business Studies", "Media Technology"], extra: "Works across corporate and SME sectors.", pathway: "Social Sciences" },
+        { title: "Financial Analyst", short: "Evaluates financial performance and investments.", skills: ["Financial modeling", "Excel", "Reporting"], subjects: ["Business Studies", "Mathematics"], extra: "Often in banks, firms or consultancies.", pathway: "Social Sciences" }
+      ],
+      "Agriculture": [
+
+        {
+          title: "Agronomist",
+          short: "Studies soil and crop management to improve agricultural productivity.",
+          skills: ["Soil science", "Crop management", "Data analysis"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Works with farms, research institutions, and government agencies.",
+          pathway: "STEM"
+        },
+        {
+          title: "Horticulturist",
+          short: "Cultivates fruits, vegetables, and ornamental plants.",
+          skills: ["Plant propagation", "Soil management", "Pest control"],
+          subjects: ["Agriculture", "Biology"],
+          extra: "Works in nurseries, farms, and landscaping industries.",
+          pathway: "STEM"
+        },
+        {
+          title: "Animal Scientist",
+          short: "Studies livestock to improve breeding, nutrition, and production.",
+          skills: ["Animal husbandry", "Nutrition management", "Genetics"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Employed in farms, research institutions, and livestock companies.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agricultural Economist",
+          short: "Analyzes economic aspects of farming and agricultural markets.",
+          skills: ["Data analysis", "Economics", "Problem-solving"],
+          subjects: ["Agriculture", "Mathematics", "Business Studies"],
+          extra: "Works in government, NGOs, and agribusiness organizations.",
+          pathway: "STEM & Social Sciences"
+        },
+        {
+          title: "Soil Scientist",
+          short: "Studies soil properties to enhance land use and crop production.",
+          skills: ["Soil analysis", "Research", "Data interpretation"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Works in research labs, agricultural companies, and universities.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agricultural Engineer",
+          short: "Designs machinery, irrigation systems, and agricultural technology.",
+          skills: ["Mechanical design", "Problem-solving", "Project management"],
+          subjects: ["Agriculture", "Physics", "Mathematics"],
+          extra: "Works in farming technology, equipment design, and irrigation projects.",
+          pathway: "STEM"
+        },
+        {
+          title: "Farm Manager",
+          short: "Oversees farm operations, production planning, and labor management.",
+          skills: ["Leadership", "Planning", "Crop & livestock knowledge"],
+          subjects: ["Agriculture", "Business Studies", "Biology"],
+          extra: "Manages commercial farms or agricultural enterprises.",
+          pathway: "Management"
+        },
+        {
+          title: "Food Scientist",
+          short: "Researches and develops food products and processing techniques.",
+          skills: ["Food chemistry", "Quality control", "Laboratory skills"],
+          subjects: ["Agriculture", "Chemistry", "Biology"],
+          extra: "Works in food industries, research labs, and regulatory bodies.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agricultural Extension Officer",
+          short: "Provides farmers with advice on modern farming techniques and practices.",
+          skills: ["Communication", "Problem-solving", "Training"],
+          subjects: ["Agriculture", "Biology", "Social Studies"],
+          extra: "Works in government or NGO agricultural outreach programs.",
+          pathway: "Social Sciences"
+        },
+        {
+          title: "Plant Breeder",
+          short: "Develops new plant varieties with desired traits such as higher yield or disease resistance.",
+          skills: ["Genetics", "Data analysis", "Laboratory techniques"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Works in research institutes, seed companies, or universities.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agricultural Inspector",
+          short: "Ensures compliance with agricultural standards and regulations.",
+          skills: ["Observation", "Regulatory knowledge", "Problem-solving"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Employed by government agencies or private agricultural organizations.",
+          pathway: "STEM"
+        },
+        {
+          title: "Irrigation Specialist",
+          short: "Designs and manages irrigation systems to optimize water usage.",
+          skills: ["Hydrology", "Engineering principles", "Problem-solving"],
+          subjects: ["Agriculture", "Physics", "Mathematics"],
+          extra: "Works in farms, irrigation projects, and agricultural consultancies.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agri-business Manager",
+          short: "Manages agricultural enterprises, from farms to supply chains.",
+          skills: ["Business planning", "Marketing", "Finance"],
+          subjects: ["Agriculture", "Business Studies", "Mathematics"],
+          extra: "Oversees operations of agri-business companies or cooperatives.",
+          pathway: "Management"
+        },
+        {
+          title: "Entomologist (Agriculture Focus)",
+          short: "Studies insects that affect crops and plants, promoting pest control.",
+          skills: ["Insect identification", "Research", "Data analysis"],
+          subjects: ["Agriculture", "Biology", "Chemistry"],
+          extra: "Works in research, pest control, and agricultural consultancy.",
+          pathway: "STEM"
+        },
+        {
+          title: "Agricultural Consultant",
+          short: "Provides expert advice to improve farm productivity and sustainability.",
+          skills: ["Problem-solving", "Analytical thinking", "Communication"],
+          subjects: ["Agriculture", "Biology", "Economics"],
+          extra: "Works with farms, government projects, and private clients.",
+          pathway: "Consultancy"
+        },
+        { title: "Agronomist", short: "Improves crop production and soil health.", skills: ["Plant science", "Soil management"], subjects: ["Agriculture", "Biology"], extra: "Works with farmers, extension services, NGOs.", pathway: "STEM" },
+        { title: "Farm Manager", short: "Oversees agricultural production and staff.", skills: ["Operations", "Planning", "Machinery"], subjects: ["Agriculture", "Business Studies"], extra: "Often in commercial farming or estates.", pathway: "Unknown" }
+      ],
+      "Geography": [
+        { title: "Geospatial Analyst", short: "Uses mapping & GIS to analyse spatial data.", skills: ["GIS", "Remote sensing", "Cartography"], subjects: ["Geography", "Computer Studies"], extra: "Used in planning, environment, and disaster response.", pathway: "STEM" },
+        { title: "Urban Planner", short: "Designs land use and urban development plans.", skills: ["Design", "Regulation knowledge"], subjects: ["Geography", "Building & Construction"], extra: "Work at municipal & private planning firms.", pathway: "Social Sciences" }
+      ],
+      "English": [
+        { title: "Teacher (English)", short: "Teaches English language & literature.", skills: ["Instruction", "Communication", "Assessment"], subjects: ["English", "Literature"], extra: "School-based role requiring pedagogy training.", pathway: "Social Sciences" },
+        { title: "Copywriter", short: "Writes persuasive content for marketing.", skills: ["Writing", "Editing", "SEO basics"], subjects: ["English", "Media Technology"], extra: "Works in agencies and in-house teams.", pathway: "Social Sciences" }
+      ],
+      "Kiswahili": [
+        { title: "Swahili Language Specialist", short: "Works on translation, education & media in Kiswahili.", skills: ["Translation", "Writing", "Cultural knowledge"], subjects: ["Kiswahili", "Literature"], extra: "Important for local media and education.", pathway: "Social Sciences" },
+        { title: "Curriculum Developer", short: "Designs curricula and learning resources.", skills: ["Educational design", "Assessment"], subjects: ["Kiswahili", "English"], extra: "Works with education bodies and publishers.", pathway: "Social Sciences" }
+      ],
+      "French": [
+        { title: "Language Interpreter", short: "Provides interpretation/translation services.", skills: ["Bilingual fluency", "Cultural literacy"], subjects: ["French", "English"], extra: "Used in diplomacy, courts, business.", pathway: "Social Sciences" },
+        { title: "International Business Specialist", short: "Works on trade and relations with francophone markets.", skills: ["Business acumen", "Language skills"], subjects: ["Business Studies", "French"], extra: "Useful for export/import and diplomacy.", pathway: "Social Sciences" }
+      ],
+      "Sign Language": [
+        { title: "Sign Language Educator", short: "Teaches sign language and deaf education.", skills: ["Sign fluency", "Teaching methods"], subjects: ["Sign Language", "English"], extra: "Specialized training often required.", pathway: "Social Sciences" },
+        { title: "Interpreter (Sign)", short: "Interprets between sign language users and others.", skills: ["Interpretation", "Sensitivity"], subjects: ["Sign Language", "English"], extra: "Work in schools, hospitals and courts.", pathway: "Social Sciences" }
+      ],
+      "Building & Construction": [
+        { title: "Architect", short: "Designs buildings & manages design projects.", skills: ["Design", "CAD", "Regulations"], subjects: ["Building & Construction", "Mathematics"], extra: "Requires professional qualification.", pathway: "STEM" },
+        { title: "Construction Technician", short: "Operates construction site activities.", skills: ["Site management", "Safety practices"], subjects: ["Building & Construction", "Physics"], extra: "Often TVET/vocational route.", pathway: "Unknown" }
+      ],
+      "Power Mechanics": [
+        { title: "Automotive Technician", short: "Diagnoses and repairs vehicles.", skills: ["Mechanical repair", "Diagnostics"], subjects: ["Power & Mechanics", "Physics"], extra: "High demand for skilled technicians.", pathway: "STEM" },
+        { title: "Electrical Engineer (technician)", short: "Works on electrical equipment and systems.", skills: ["Wiring", "Troubleshooting"], subjects: ["Electricity & Mechanics", "Physics"], extra: "Industrial and domestic roles.", pathway: "STEM" }
+      ],
+      "Aviation Technology": [
+        {
+          title: "Pilot",
+          short: "Operates aircraft for commercial, cargo, or private flights.",
+          skills: ["Navigation", "Decision-making", "Communication", "Problem-solving"],
+          subjects: ["Physics", "Mathematics"],
+          extra: "Requires pilot training, licensing, and medical certification.",
+          pathway: "STEM"
+        },
+        {
+          title: "Air Traffic Controller",
+          short: "Manages the safe and efficient movement of aircraft in airspace.",
+          skills: ["Situational awareness", "Communication", "Stress management"],
+          subjects: ["Physics", "Mathematics"],
+          extra: "Requires specialized air traffic control training and certification.",
+          pathway: "STEM"
+        },
+        {
+          title: "Aerospace Engineer",
+          short: "Designs, develops, and tests aircraft and spacecraft systems.",
+          skills: ["Engineering design", "Problem-solving", "Mathematical modeling"],
+          subjects: ["Physics", "Mathematics", "Chemistry"],
+          extra: "Requires an engineering degree specializing in aerospace.",
+          pathway: "STEM"
+        },
+        {
+          title: "Aircraft Maintenance Technician",
+          short: "Maintains and repairs aircraft to ensure operational safety.",
+          skills: ["Mechanical skills", "Problem-solving", "Attention to detail"],
+          subjects: ["Physics", "Mathematics", "Chemistry"],
+          extra: "Requires technical training and licensing in aircraft maintenance.",
+          pathway: "STEM"
+        },
+        {
+          title: "Flight Operations Manager",
+          short: "Oversees flight scheduling, safety protocols, and operational logistics.",
+          skills: ["Leadership", "Organization", "Communication", "Problem-solving"],
+          subjects: ["Physics", "Mathematics", "Business Studies"],
+          extra: "Requires experience in aviation operations management.",
+          pathway: "Management & STEM"
+        },
+        {
+          title: "Aviation Safety Inspector",
+          short: "Inspects aircraft, equipment, and operations to ensure regulatory compliance.",
+          skills: ["Attention to detail", "Technical knowledge", "Regulatory compliance"],
+          subjects: ["Physics", "Mathematics"],
+          extra: "Works for aviation authorities or airlines; certification required.",
+          pathway: "STEM & Social Sciences"
+        },
+        { title: "Air Traffic Controller", short: "Manages aircraft movements and safety.", skills: ["Situational awareness", "Communication"], subjects: ["Aviation Technology", "Mathematics"], extra: "High-responsibility role with training.", pathway: "STEM" },
+        { title: "Aircraft Maintenance Technician", short: "Maintains and repairs airplanes.", skills: ["Mechanical skills", "Regulations"], subjects: ["Aviation Technology", "Physics"], extra: "Usually requires certified training.", pathway: "STEM" }
+      ],
+      "Marine & Fisheries": [
+        { title: "Marine Officer", short: "Operates and manages marine vessels.", skills: ["Navigation", "Safety procedures"], subjects: ["Marine & Fisheries", "Geography"], extra: "Work on ships, fishing, and ports.", pathway: "Unknown" },
+        { title: "Aquaculture Specialist", short: "Manages fish farming operations.", skills: ["Aquaculture", "Water quality management"], subjects: ["Marine & Fisheries", "Biology"], extra: "Growing food production sector role.", pathway: "STEM" }
+      ],
+      "Home Science": [
+
+        {
+          title: "Nutritionist",
+          short: "Advises individuals or organizations on diet and nutrition.",
+          skills: ["Diet planning", "Nutritional assessment", "Communication"],
+          subjects: ["Home Science", "Biology", "Chemistry"],
+          extra: "Requires certification or degree in nutrition or dietetics.",
+          pathway: "STEM & Health"
+        },
+
+        {
+          title: "Dietitian",
+          short: "Plans diets and supervises nutritional care in hospitals or clinics.",
+          skills: ["Clinical nutrition", "Dietary analysis", "Patient counseling"],
+          subjects: ["Home Science", "Biology", "Chemistry"],
+          extra: "Requires degree and professional registration.",
+          pathway: "Health"
+        },
+
+        {
+          title: "Food Scientist",
+          short: "Studies food composition, safety, and processing techniques.",
+          skills: ["Food chemistry", "Quality control", "Laboratory skills"],
+          subjects: ["Home Science", "Chemistry", "Biology"],
+          extra: "Works in food industries, research labs, or regulatory bodies.",
+          pathway: "STEM & Industry"
+        },
+
+        {
+          title: "Childcare Specialist / Early Childhood Educator",
+          short: "Supports child development and education in early years.",
+          skills: ["Child development", "Communication", "Planning activities"],
+          subjects: ["Home Science", "Psychology", "Education"],
+          extra: "Requires training in early childhood education.",
+          pathway: "Education & Social Sciences"
+        },
+
+        {
+          title: "Family Counselor",
+          short: "Provides guidance on family dynamics and personal development.",
+          skills: ["Communication", "Problem-solving", "Empathy"],
+          subjects: ["Home Science", "Psychology", "Social Studies"],
+          extra: "Often requires counseling certification or psychology degree.",
+          pathway: "Social Sciences"
+        },
+
+        {
+          title: "Textile Technologist",
+          short: "Designs and tests fabrics and clothing for quality and durability.",
+          skills: ["Textile analysis", "Design", "Quality control"],
+          subjects: ["Home Science", "Chemistry", "Design"],
+          extra: "Works in fashion, textile industry, and manufacturing.",
+          pathway: "Arts & Industry"
+        },
+
+        {
+          title: "Interior Designer",
+          short: "Plans and decorates indoor spaces for aesthetics and functionality.",
+          skills: ["Spatial planning", "Design software", "Creativity"],
+          subjects: ["Home Science", "Art", "Design"],
+          extra: "May require design certification or degree.",
+          pathway: "Arts & Design"
+        },
+
+        {
+          title: "Community Health Worker",
+          short: "Promotes health awareness and preventive care in communities.",
+          skills: ["Health education", "Communication", "Community outreach"],
+          subjects: ["Home Science", "Biology", "Social Studies"],
+          extra: "Works with NGOs, hospitals, and government health programs.",
+          pathway: "Health & Social Sciences"
+        },
+
+        {
+          title: "Hospitality and Catering Manager",
+          short: "Oversees food services, kitchens, and catering operations.",
+          skills: ["Management", "Food safety", "Customer service"],
+          subjects: ["Home Science", "Business Studies", "Nutrition"],
+          extra: "Works in hotels, restaurants, and event management.",
+          pathway: "Industry & Service"
+        },
+
+        {
+          title: "Consumer Analyst / Product Tester",
+          short: "Tests products and advises consumers on usage and safety.",
+          skills: ["Product evaluation", "Research", "Reporting"],
+          subjects: ["Home Science", "Chemistry", "Business Studies"],
+          extra: "Works in consumer research firms or product development.",
+          pathway: "Industry & Research"
+        },
+
+        {
+          title: "Health Educator",
+          short: "Designs programs to teach people about healthy lifestyles.",
+          skills: ["Communication", "Program planning", "Public speaking"],
+          subjects: ["Home Science", "Biology", "Social Studies"],
+          extra: "Works in schools, communities, or public health organizations.",
+          pathway: "Health & Education"
+        },
+
+        {
+          title: "Food Safety Inspector",
+          short: "Ensures compliance with food safety regulations and standards.",
+          skills: ["Inspection", "Knowledge of hygiene", "Attention to detail"],
+          subjects: ["Home Science", "Chemistry", "Biology"],
+          extra: "Employed by regulatory agencies or private companies.",
+          pathway: "STEM & Health"
+        },
+
+        {
+          title: "Textile Designer",
+          short: "Creates patterns, fabrics, and textile products for fashion or interiors.",
+          skills: ["Creativity", "Design software", "Fabric knowledge"],
+          subjects: ["Home Science", "Art", "Design"],
+          extra: "Works in fashion houses, textile companies, or as freelancers.",
+          pathway: "Arts & Design"
+        },
+
+        {
+          title: "Community Nutritionist",
+          short: "Develops nutrition programs for communities and vulnerable groups.",
+          skills: ["Nutrition planning", "Public outreach", "Research"],
+          subjects: ["Home Science", "Biology", "Social Studies"],
+          extra: "Works in NGOs, government programs, or hospitals.",
+          pathway: "Health & Social Sciences"
+        },
+
+        {
+          title: "Hospital Dietetic Manager",
+          short: "Manages hospital food services, ensuring balanced nutrition for patients.",
+          skills: ["Nutrition management", "Team supervision", "Food safety"],
+          subjects: ["Home Science", "Biology", "Business Studies"],
+          extra: "Requires dietetics background and management skills.",
+          pathway: "Health & Management"
+        },
+        { title: "Nutritionist", short: "Advises on diet and nutrition programs.", skills: ["Nutrition science", "Counselling"], subjects: ["Home Science", "Biology"], extra: "Works in clinics, industry & community programs.", pathway: "STEM" },
+        { title: "Food Technologist", short: "Improves food products and safety.", skills: ["Food processing", "Quality control"], subjects: ["Home Science", "Chemistry"], extra: "Industry-facing role.", pathway: "STEM" }
+      ],
+      "Wood Work": [
+        { title: "Carpenter / Joiner", short: "Builds and repairs wooden structures & furniture.", skills: ["Woodworking", "Measurements"], subjects: ["Wood Work", "Mathematics"], extra: "Trades role often learned via apprenticeship.", pathway: "Unknown" }
+      ],
+      "Metal Work": [
+        { title: "Metal Fabricator", short: "Manufactures metal components and assemblies.", skills: ["Welding", "Fabrication"], subjects: ["Metal Work", "Mathematics"], extra: "Used in construction, manufacturing and repairs.", pathway: "Unknown" }
+      ],
+      "Mandarin Chinese": [
+        {
+          title: "Language Interpreter",
+          short: "Translates spoken or signed Mandarin Chinese into another language and vice versa.",
+          skills: ["Translation", "Active listening", "Cultural awareness"],
+          subjects: ["Mandarin Chinese", "English"],
+          extra: "Works in international organizations, government, courts, and conferences.",
+          pathway: "Social Sciences & Languages"
+        },
+        {
+          title: "Language Translator",
+          short: "Converts written Mandarin Chinese content into another language accurately.",
+          skills: ["Writing", "Attention to detail", "Cultural knowledge"],
+          subjects: ["Mandarin Chinese", "English"],
+          extra: "Employed by publishing companies, NGOs, or as a freelance professional.",
+          pathway: "Social Sciences & Languages"
+        },
+        {
+          title: "Foreign Language Teacher",
+          short: "Teaches Mandarin Chinese to students at schools, colleges, or language centers.",
+          skills: ["Teaching", "Communication", "Lesson planning"],
+          subjects: ["Mandarin Chinese", "English"],
+          extra: "Requires teaching certification and language proficiency.",
+          pathway: "Education & Languages"
+        },
+        {
+          title: "Diplomatic Language Officer",
+          short: "Uses Mandarin Chinese skills to support diplomatic communications and international relations.",
+          skills: ["Translation", "Negotiation", "Cultural diplomacy"],
+          subjects: ["Mandarin Chinese", "Social Studies", "English"],
+          extra: "Works in foreign service, embassies, and international organizations.",
+          pathway: "Social Sciences & Languages"
+        },
+        {
+          title: "Global Business Specialist",
+          short: "Uses Mandarin Chinese skills for trade, marketing, and international business negotiations.",
+          skills: ["Communication", "Business acumen", "Cultural awareness"],
+          subjects: ["Mandarin Chinese", "Business Studies", "English"],
+          extra: "Works in multinational companies, import/export, and trade organizations.",
+          pathway: "Social Sciences & Business"
+        }
+      ],
+      "Hospitality & Tourism": [
+        { title: "Hotel Manager", short: "Oversees hotel operations and staff.", skills: ["Operations", "Customer service", "Finance"], subjects: ["Business Studies", "Home Science"], extra: "Work in hotels, resorts and tourism businesses.", pathway: "Social Sciences" },
+        { title: "Tour Guide", short: "Leads and educates tourists about sites.", skills: ["Communication", "Local knowledge"], subjects: ["Geography", "English"], extra: "Often seasonal or freelance.", pathway: "Social Sciences" }
+      ],
+      "Health & Wellness": [
+        { title: "Public Health Officer", short: "Works on disease prevention and health programs.", skills: ["Epidemiology", "Community outreach"], subjects: ["Biology", "Home Science"], extra: "Works with government and NGOs.", pathway: "STEM" },
+        { title: "Nurse", short: "Provides patient care in clinical settings.", skills: ["Clinical skills", "Compassion"], subjects: ["Biology", "Home Science"], extra: "Requires professional training and licensing.", pathway: "STEM" }
+      ]
+    };
+
+    /* UI wiring */
+    const learningList = document.getElementById('learningAreaList');
+    const careerList = document.getElementById('careerList');
+    const emptyHint = document.getElementById('emptyHint');
+    const tooltip = document.getElementById('tooltip');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalShort = document.getElementById('modalShort');
+    const modalSkills = document.getElementById('modalSkills');
+    const modalSubjects = document.getElementById('modalSubjects');
+    const modalExtra = document.getElementById('modalExtra');
+    const modalClose = document.getElementById('modalClose');
+    const showAllBtn = document.getElementById('showAll');
+    const clearBtn = document.getElementById('clearSelection');
+
+    let activeLearningItem = null;
+
+    /* Helpers */
+    function clearCareerList() {
+      careerList.innerHTML = '';
+      emptyHint.style.display = '';
+    }
+    function populateCareers(areaKey) {
+      clearCareerList();
+      const careers = CAREER_MAP[areaKey];
+      if (!careers || careers.length === 0) {
+        emptyHint.textContent = "No career data available for this learning area.";
+        emptyHint.style.display = 'block';
+        return;
+      }
+      emptyHint.style.display = 'none';
+      careers.forEach(c => {
+        const li = document.createElement('li');
+        li.className = 'career-item';
+        li.tabIndex = 0;
+        li.textContent = c.title;
+        // store full object for modal
+        li._data = c;
+        // tooltip on hover
+        li.addEventListener('mouseenter', (e) => {
+          tooltip.textContent = c.short;
+          tooltip.style.display = 'block';
+          tooltip.setAttribute('aria-hidden', 'false');
+        });
+        li.addEventListener('mousemove', (e) => {
+          const pad = 14;
+          let x = e.clientX + pad;
+          let y = e.clientY + pad;
+          // keep tooltip inside viewport
+          const rect = tooltip.getBoundingClientRect();
+          if (x + rect.width > window.innerWidth) x = e.clientX - rect.width - pad;
+          if (y + rect.height > window.innerHeight) y = e.clientY - rect.height - pad;
+          tooltip.style.left = x + 'px';
+          tooltip.style.top = y + 'px';
+        });
+        li.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+          tooltip.setAttribute('aria-hidden', 'true');
+        });
+        // click for modal
+        li.addEventListener('click', () => openModal(c));
+        li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openModal(c); } });
+        careerList.appendChild(li);
+      });
+    }
+
+    /* click learning area */
+    learningList.querySelectorAll('.learning').forEach(item => {
+      item.addEventListener('click', () => {
+        // mark selection
+        if (activeLearningItem) activeLearningItem.removeAttribute('aria-selected');
+        activeLearningItem = item;
+        item.setAttribute('aria-selected', 'true');
+        populateCareers(item.dataset.area);
+      });
+      item.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          item.click();
+        }
+      });
+    });
+
+    /* modal logic */
+    function openModal(career) {
+      modalTitle.textContent = career.title;
+      modalShort.textContent = career.short || '';
+      modalSkills.innerHTML = '';
+      (career.skills || []).forEach(s => {
+        const p = document.createElement('span');
+        p.className = 'pill';
+        p.textContent = s;
+        modalSkills.appendChild(p);
+      });
+      modalSubjects.innerHTML = '';
+      (career.subjects || []).forEach(s => {
+        const p = document.createElement('span');
+        p.className = 'pill';
+        p.textContent = s;
+        modalSubjects.appendChild(p);
+      });
+      modalExtra.textContent = career.extra || '';
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    /* top control buttons */
+    showAllBtn.addEventListener('click', () => {
+      // Clear and show all learning areas' careers grouped
+      clearCareerList();
+      emptyHint.style.display = 'none';
+      Object.keys(CAREER_MAP).forEach(area => {
+        const header = document.createElement('li');
+        header.style.fontWeight = '700';
+        header.style.background = 'transparent';
+        header.style.cursor = 'default';
+        header.textContent = area;
+        careerList.appendChild(header);
+        CAREER_MAP[area].forEach(c => {
+          const li = document.createElement('li');
+          li.className = 'career-item';
+          li.tabIndex = 0;
+          li.textContent = '  — ' + c.title;
+          li._data = c;
+          li.addEventListener('mouseenter', () => {
+            tooltip.textContent = c.short;
+            tooltip.style.display = 'block';
+            tooltip.setAttribute('aria-hidden', 'false');
+          });
+          li.addEventListener('mousemove', (e) => {
+            const pad = 14;
+            let x = e.clientX + pad; let y = e.clientY + pad;
+            const rect = tooltip.getBoundingClientRect();
+            if (x + rect.width > window.innerWidth) x = e.clientX - rect.width - pad;
+            if (y + rect.height > window.innerHeight) y = e.clientY - rect.height - pad;
+            tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
+          });
+          li.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; tooltip.setAttribute('aria-hidden', 'true'); });
+          li.addEventListener('click', () => openModal(c));
+          careerList.appendChild(li);
+        });
+      });
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (activeLearningItem) activeLearningItem.removeAttribute('aria-selected');
+      activeLearningItem = null;
+      clearCareerList();
+      emptyHint.textContent = "Select a learning area on the left to view related careers.";
+      emptyHint.style.display = 'block';
+    });
+
+    /* Small accessibility focus: highlight selected with keyboard */
+    learningList.addEventListener('focusin', (e) => {
+      if (e.target.classList && e.target.classList.contains('learning')) e.target.style.outline = '2px solid rgba(14,165,164,0.12)';
+    });
+    learningList.addEventListener('focusout', (e) => {
+      if (e.target.classList && e.target.classList.contains('learning')) e.target.style.outline = 'none';
+    });
+
+    /* initial state */
+    clearCareerList();
+  </script>
+  <script>
+    /* ========== CAREER DISPLAY HANDLER ========== */
+    document.querySelectorAll('.learning').forEach(item => {
+      item.addEventListener('click', () => {
+        const subject = item.dataset.area;
+        const careers = careersBySubject[subject] || [];
+
+        const panel = document.getElementById('careerList');
+        panel.innerHTML = `<h3>${subject} – Related Careers</h3>`;
+
+        if (careers.length === 0) {
+          panel.innerHTML += "<p>No careers listed for this learning area yet.</p>";
+          return;
+        }
+
+        const ul = document.createElement('ul');
+        careers.forEach(c => {
+          const li = document.createElement('li');
+          li.textContent = c;
+          ul.appendChild(li);
+        });
+        panel.appendChild(ul);
+      });
+    });
+
+
+    /* ========== PATHWAY COLLAPSE LOGIC ========== */
+    document.querySelectorAll('.pathway-title').forEach(pt => {
+      pt.addEventListener('click', () => {
+        const parent = pt.parentElement;
+        const trackList = parent.querySelector('.track-list');
+
+        // Collapse all other pathways
+        document.querySelectorAll('.track-list').forEach(t => {
+          if (t !== trackList) t.classList.add('hidden');
+        });
+
+        // Toggle this pathway
+        trackList.classList.toggle('hidden');
+      });
+    });
+
+
+    /* ========== TRACK COLLAPSE LOGIC ========== */
+    document.querySelectorAll('.track-title').forEach(tt => {
+      tt.addEventListener('click', () => {
+        const parent = tt.parentElement;
+        const learningList = parent.querySelector('.learning-list');
+
+        // Collapse siblings
+        parent.parentElement.querySelectorAll('.learning-list').forEach(list => {
+          if (list !== learningList) list.classList.add('hidden');
+        });
+
+        // Toggle this track
+        learningList.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

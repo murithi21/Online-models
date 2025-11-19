@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers vs Learning Areas</title>
+
+  <style>
+    body {
+      font-family: Comic Sans MS, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fffaf0;
+    }
+
+    .top-bar {
+      background-color: #fdd835;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .top-bar button {
+      background-color: #fff;
+      border: 2px solid #0288d1;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .top-bar button:hover {
+      background-color: #0288d1;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      height: 90vh;
+    }
+
+    .left, .right {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      height: 85vh;
+      border-radius: 2%;
+    }
+
+    .left {
+      background-color: #e0f7fa;
+      border-right: 4px dashed #ccc;
+    }
+
+    .right {
+      background-color: #fce4ec;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .instruction {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .item-list {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mycareers {
+      padding: 15px;
+      background-color: #fff;
+      border: 2px solid #b3e5fc;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      font-size: 0.95rem;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .mycareers:hover {
+      background-color: #aed581;
+      transform: scale(1.03);
+    }
+
+    .glow {
+      background-color: #ffeb3b !important;
+      border-color: #f57c00;
+      font-weight: bold;
+      animation: glow 0.8s ease-in-out infinite alternate;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 5px #f57c00;
+      }
+      to {
+        box-shadow: 0 0 20px #f57c00;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button onclick="filterByPathway('STEM')">🔬 STEM</button>
+    <button onclick="filterByPathway('Social Sciences')">🌍 Social Sciences</button>
+    <button onclick="filterByPathway('Arts & Sports')">🎨 Arts & Sports</button>
+    <button onclick="filterByPathway('All')">🔁 Show All</button>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <h2>🎓 Learning Areas</h2>
+      <div class="instruction">Click a learning area to see which careers it connects to!</div>
+      <ul id="learningAreaList" class="item-list">
+        <li class="mycareers" data-careers="Music Production Professional, Performance & Arts Education Professional" data-pathway="Arts & Sports">Music & Dance</li>
+        <li class="mycareers" data-careers="Fine Artist, Arts and Design Professional" data-pathway="Arts & Sports">Fine Art</li>
+        <li class="mycareers" data-careers="Media Production Professional, Journalism Professional" data-pathway="Social Sciences">Media Technology</li>
+        <li class="mycareers" data-careers="Software & System Development Professional, Graphic Design Professional" data-pathway="STEM">Computer Studies</li>
+        <li class="mycareers" data-careers="Ball Games Professional, Sports Management Professional" data-pathway="Arts & Sports">Sports & Recreation</li>
+        <li class="mycareers" data-careers="Sports & Wellness Professional" data-pathway="Arts & Sports">Physical Education</li>
+        <li class="mycareers" data-careers="Onstage & Onscreen Storytelling Professional" data-pathway="Arts & Sports">Theatre & Film</li>
+        <li class="mycareers" data-careers="Civil Engineer, Data Analyst" data-pathway="STEM">Mathematics</li>
+        <li class="mycareers" data-careers="Social Worker, Historian" data-pathway="Social Sciences">Social Studies</li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <h2>💼 Suggested Careers</h2>
+      <div class="instruction">Click a career to see which subjects can lead to it!</div>
+      <ul id="careerList" class="item-list">
+        <li class="mycareers" data-learning="Music & Dance" data-pathway="Arts & Sports">Music Production Professional</li>
+        <li class="mycareers" data-learning="Music & Dance" data-pathway="Arts & Sports">Performance & Arts Education Professional</li>
+        <li class="mycareers" data-learning="Fine Art" data-pathway="Arts & Sports">Fine Artist</li>
+        <li class="mycareers" data-learning="Fine Art" data-pathway="Arts & Sports">Arts and Design Professional</li>
+        <li class="mycareers" data-learning="Media Technology" data-pathway="Social Sciences">Media Production Professional</li>
+        <li class="mycareers" data-learning="Media Technology" data-pathway="Social Sciences">Journalism Professional</li>
+        <li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="STEM">Software & System Development Professional</li>
+        <li class="mycareers" data-learning="Computer Studies" data-pathway="STEM">Graphic Design Professional</li>
+        <li class="mycareers" data-learning="Mathematics" data-pathway="STEM">Data Analyst</li>
+        <li class="mycareers" data-learning="Mathematics" data-pathway="STEM">Civil Engineer</li>
+        <li class="mycareers" data-learning="Social Studies" data-pathway="Social Sciences">Social Worker</li>
+        <li class="mycareers" data-learning="Social Studies" data-pathway="Social Sciences">Historian</li>
+        <li class="mycareers" data-learning="Sports & Recreation" data-pathway="Arts & Sports">Ball Games Professional</li>
+        <li class="mycareers" data-learning="Physical Education" data-pathway="Arts & Sports">Sports & Wellness Professional</li>
+        <li class="mycareers" data-learning="Theatre & Film" data-pathway="Arts & Sports">Onstage & Onscreen Storytelling Professional</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const careers = document.querySelectorAll('#careerList .mycareers');
+    const learningAreas = document.querySelectorAll('#learningAreaList .mycareers');
+
+    function clearGlows() {
+      careers.forEach(c => c.classList.remove('glow'));
+      learningAreas.forEach(l => l.classList.remove('glow'));
+    }
+
+    careers.forEach(career => {
+      career.addEventListener('click', function () {
+        clearGlows();
+        this.classList.add('glow');
+        const learningText = this.getAttribute('data-learning').split(',').map(l => l.trim());
+        learningAreas.forEach(area => {
+          if (learningText.includes(area.textContent)) {
+            area.classList.add('glow');
+          }
+        });
+      });
+    });
+
+    learningAreas.forEach(area => {
+      area.addEventListener('click', function () {
+        clearGlows();
+        this.classList.add('glow');
+        const careerText = this.getAttribute('data-careers').split(',').map(c => c.trim());
+        careers.forEach(career => {
+          if (careerText.includes(career.textContent)) {
+            career.classList.add('glow');
+          }
+        });
+      });
+    });
+
+    function filterByPathway(pathway) {
+      learningAreas.forEach(area => {
+        area.classList.toggle('hidden', pathway !== 'All' && area.dataset.pathway !== pathway);
+      });
+
+      careers.forEach(career => {
+        career.classList.toggle('hidden', pathway !== 'All' && career.dataset.pathway !== pathway);
+      });
+
+      clearGlows();
+    }
+  </script>
+
+</body>
+</html>

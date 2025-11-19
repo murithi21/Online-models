@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Gravity CBC</title>
+  <link href="../statics/style.css" rel="stylesheet" />
+  <link href="../statics/all.min.css" rel="stylesheet" />
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    referrerpolicy="no-referrer" rel="stylesheet">
+  </link>
+</head>
+
+<body>
+  <main class="main-wrap">
+    <header class="main-head">
+      <div class="main-nav">
+        <nav class="navbar">
+          <div class="navbar-nav">
+            <div class="title">
+              <h3>
+                <i><img alt="App Icon" src="../statics/img/logo.png" style="width:35px; height:35px;" /></i>
+                <span class="title-text">GravityCBC</span>
+              </h3>
+            </div>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <a class="nav-link" href="../templates/index.html">
+                  <i><i class="fa-solid fa-landmark"></i></i>
+                  <span class="link-text">Pathways</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a class="nav-link" href="../templates/step1.html">
+                  <i<i class="fa-solid fa-1">
+                    <span class="link-text">STEP 1</span>
+                  </i<i>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a class="nav-link" href="../templates/step2.html">
+                  <i><i class="fa-solid fa-2"></i></i>
+                  <span class="link-text">STEP 2</span>
+                </a>
+              </li>
+              <li class="nav-list-item active">
+                <a class="nav-link" href="../templates/step3&4.html">
+                  <i><i class="fa-solid fa-3"></i></i>
+                  <span class="link-text">STEP 3</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a class="nav-link" href="../templates/step5.html">
+                  <i><i class="fa-solid fa-4"></i></i>
+                  <span class="link-text">STEP 4</span>
+                </a>
+              </li>
+              <li class="nav-list-item">
+                <a class="nav-link" href="../templates/step6.html">
+                  <i><i class="fa-solid fa-5"></i></i>
+                  <span class="link-text">Step 5</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="showcase">
+      <div class="overlay">
+        <div class="head">
+          <button class="toggler">
+            <i><i class="fa-solid fa-bars"></i></i>
+          </button>
+        </div>
+        <div class="show">
+          <div class="top-bar">
+            <button onclick="filterByPathway('STEM')">🔬 STEM</button>
+            <button onclick="filterByPathway('Social Sciences')">🌍 Social Sciences</button>
+            <button onclick="filterByPathway('Arts &amp; Sports')">🎨 Arts & Sports Science</button>
+            <button onclick="filterByPathway('All')">🔁 Show All</button>
+          </div>
+          <div class="container">
+            <div class="left">
+              <h2>🎓 Subjects in Senior School</h2>
+
+              <!--Search Facility-->
+              <!DOCTYPE html>
+              <html>
+
+              <head>
+                <meta charset="UTF-8">
+                <title>Search Elements in Page</title>
+                <style>
+                  body {
+                    font-family: Arial, sans-serif;
+                  }
+
+                  #searchBox2 {
+                    margin-left: 20%;
+                    padding: 5px;
+                    width: 200px;
+                  }
+
+                  #searchButton2 {
+                    padding: 5px 10px;
+                    margin-left: 5px;
+                  }
+
+                  #clearButton2 {
+                    padding: 5px 10px;
+                  }
+
+                  .highlight {
+                    background-color: yellow;
+                  }
+                </style>
+              </head>
+
+              <body>
+
+                <input type="text" id="searchBox2" placeholder="Type to search...">
+                <button id="searchButton2">Search</button>
+                <button id="clearButton2">Clear</button>
+
+                <script>
+                  document.getElementById("searchButton2").addEventListener("click", function () {
+                    let searchValue = document.getElementById("searchBox2").value.toLowerCase();
+                    let paragraphs = document.querySelectorAll(".left .mycareers");
+
+                    paragraphs.forEach(p => {
+                      let text = p.textContent.toLowerCase();
+                      p.classList.remove("highlight");
+
+                      if (searchValue && text.includes(searchValue)) {
+                        p.style.display = "";
+                        p.classList.add("highlight");
+                      } else if (searchValue) {
+                        p.style.display = "none";
+                      } else {
+                        p.style.display = "";
+                      }
+                    });
+                  });
+
+                  document.getElementById('searchBox2').addEventListener('keyup', function (e) {
+                    if (e.key === 'Enter') document.getElementById('searchButton2').click();
+                  });
+
+                  document.getElementById("clearButton2").addEventListener("click", function () {
+                    document.getElementById("searchBox2").value = "";
+                    let paragraphs = document.querySelectorAll(".left .mycareers");
+                    paragraphs.forEach(p => {
+                      p.style.display = "";
+                      p.classList.remove("highlight");
+                    });
+                  });
+                </script>
+
+              </body>
+
+              </html>
+
+              <div class="instruction">Click a learning area to see which careers it connects to!</div>
+              <ul class="item-list" id="learningAreaList">
+                <li class="mycareers"
+                  data-careers="Music Production Professional, Performance &amp; Arts Education Professional"
+                  data-pathway="Arts &amp; Sports">Music &amp; Dance</li>
+                <li class="mycareers" data-careers="Fine Artist, Arts and Design Professional"
+                  data-pathway="Arts &amp; Sports">Fine Art</li>
+                <li class="mycareers"
+                  data-careers="Art Audio/Video Communication Professional, Media Production Professional, Journalism Professional"
+                  data-pathway="STEM">Media Technology</li>
+                <li class="mycareers"
+                  data-careers="Software &amp; System Development Professional, Graphic Design Professional, Statistics &amp; Data Analysis Professional"
+                  data-pathway="STEM">Computer Studies</li>
+                <li class="mycareers"
+                  data-careers="Ball Games Professional, Sports Management Professional, Track &amp; Field Professional"
+                  data-pathway="Arts &amp; Sports">Sports &amp; Recreation</li>
+                <li class="mycareers" data-careers="Sports &amp; Wellness Professional, Physiotherapy Professional"
+                  data-pathway="Arts &amp; Sports">Physical Education</li>
+                <li class="mycareers" data-careers="Onstage &amp; Onscreen Storytelling Professional"
+                  data-pathway="Arts &amp; Sports">Theatre &amp; Film</li>
+                <li class="mycareers"
+                  data-careers="Medical Professional, Health Science Professional, Pharmaceutical &amp; Biomedical Professional"
+                  data-pathway="STEM">Biology</li>
+                <li class="mycareers"
+                  data-careers="Government &amp; Public Administration, Cultural Industries Professional, Legal Professional, Government &amp; Public Administration Professional"
+                  data-pathway="Social Sciences">History &amp; Citizenship</li>
+                <li class="mycareers" data-careers="Human Services Professional, Community Leadership Professional"
+                  data-pathway="Social Sciences">Community Service Learning</li>
+                <li class="mycareers"
+                  data-careers="Religious Practitioner Professional, Ministry &amp; Pastoral Care Professional, Clergy, Temple &amp; Ashram Management Professional"
+                  data-pathway="Social Sciences">Religious Education</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Communication &amp; Media Professional, Journalism Professional, Education &amp; Training Professional (English)"
+                  data-pathway="Unknown">English</li>
+                <li class="mycareers"
+                  data-careers="Weather Study Professional, Geospatial &amp; Urban Development Professional"
+                  data-pathway="Unknown">Geography</li>
+                <li class="mycareers" data-careers="Business Professional, Corporate Finance Management Professional"
+                  data-pathway="Social Sciences">Business Studies</li>
+                <li class="mycareers"
+                  data-careers="Education &amp; Training Professional (Sign Language), Language Interpreter Professional"
+                  data-pathway="Unknown">Sign Language</li>
+                <li class="mycareers"
+                  data-careers="Linguistic Professional, Mtalam wa Fasihi na Utamaduni, Language Interpreter Professional"
+                  data-pathway="Unknown">Kiswahili/ Kenya Sign Language</li>
+                <li class="mycareers"
+                  data-careers="Linguistic Professional, Global Business Professional, Education &amp; Training Professional, Language Interpreter Professional"
+                  data-pathway="Unknown">Mandarin Chinese</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Global Business Professional, Education &amp; Training Professional, Neo Dialect Professional, Language Interpreter Professional"
+                  data-pathway="Unknown">German</li>
+                <li class="mycareers"
+                  data-careers="Linguistic Professional, Education &amp; Training Professional, Language Service &amp; Diplomacy Professional, Language Interpreter Professional"
+                  data-pathway="Unknown">Arabic</li>
+                <li class="mycareers" data-careers="Construction Technician, Architecture &amp; Design Professional"
+                  data-pathway="STEM">Building &amp; Construction</li>
+                <li class="mycareers"
+                  data-careers="Pharmaceutical &amp; Biomedical Professional, Medical Professional, Health Science Professional"
+                  data-pathway="STEM">Chemistry</li>
+                <li class="mycareers"
+                  data-careers="Applied Physics Professional, Engineering Professional, Architecture &amp; Design Professional"
+                  data-pathway="STEM">Physics</li>
+                <li class="mycareers" data-careers="Environment &amp; Health Professional" data-pathway="STEM">General
+                  Science</li>
+                <li class="mycareers" data-careers="Production &amp; Farm Management Professional"
+                  data-pathway="Unknown">Agriculture</li>
+                <li class="mycareers"
+                  data-careers="Statistics &amp; Data Analysis Professional, Software &amp; System Development Professional"
+                  data-pathway="STEM">Mathematics</li>
+                <li class="mycareers" data-careers="Marine Operation Professional, Navigation Professional"
+                  data-pathway="Unknown">Marine &amp; Fisheries</li>
+                <li class="mycareers" data-careers="Electrical Engineering Professional" data-pathway="STEM">Electricity
+                </li>
+                <li class="mycareers"
+                  data-careers="Advanced Metal Manufacturing Professional, Metal Fabrication Professional"
+                  data-pathway="Unknown">Metal Work</li>
+                <li class="mycareers" data-careers="Air Traffic Control Technician, Aviation Crew" data-pathway="STEM">
+                  Aviation</li>
+                <li class="mycareers" data-careers="Wood Design &amp; Manufacturing Professional"
+                  data-pathway="Unknown">Wood Work</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Mtalam wa Fasihi na Utamaduni, Education &amp; Training Professional, Language Service &amp; Diplomacy Professional"
+                  data-pathway="Arts &amp; Sports">Fasihi ya Kiswahili</li>
+                <li class="mycareers"
+                  data-careers="Automotives &amp; Diesel Professional, Power Generation &amp; Distribution Professional"
+                  data-pathway="STEM">Power &amp; Mechanics</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Indigineous Language Journalist &amp; Media Professional, Education &amp; Training Professional, Language Interpreter Professional"
+                  data-pathway="Social Sciences">Indigenous Languages</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Literery Arts Professional, Education &amp; Training Professional"
+                  data-pathway="Arts &amp; Sports">Literature in English</li>
+                <li class="mycareers"
+                  data-careers="Linguistics Professional, Global Business Professional, Education &amp; Training Professional, Neo Dialect Professional, Language Interpreter Professional"
+                  data-pathway="Unknown">French</li>
+                <li class="mycareers" data-careers="Nutrition &amp; Food Science Professional" data-pathway="STEM">Home
+                  Science</li>
+              </ul>
+
+            </div>
+            <div class="right">
+              <h2>💼 Suggested Careers</h2>
+              <!--Search Facility-->
+              <!DOCTYPE html>
+              <html>
+
+              <head>
+                <meta charset="UTF-8">
+                <title>Search Elements in Page</title>
+                <style>
+                  body {
+                    font-family: Arial, sans-serif;
+                  }
+
+                  #searchBox {
+                    margin-left: 20%;
+                    padding: 5px;
+                    width: 200px;
+                  }
+
+                  #searchButton {
+                    padding: 5px 10px;
+                    margin-left: 5px;
+                  }
+
+                  #clearButton {
+                    padding: 5px 10px;
+                  }
+
+                  .highlight {
+                    background-color: yellow;
+                  }
+                </style>
+              </head>
+
+              <body>
+
+                <input type="text" id="searchBox" placeholder="Type to search...">
+                <button id="searchButton">Search</button>
+                <button id="clearButton">Clear</button>
+
+                <script>
+                  document.getElementById("searchButton").addEventListener("click", function () {
+                    let searchValue = document.getElementById("searchBox").value.toLowerCase();
+                    let paragraphs = document.querySelectorAll(".right .mycareers");
+
+                    paragraphs.forEach(p => {
+                      let text = p.textContent.toLowerCase();
+                      p.classList.remove("highlight");
+
+                      if (searchValue && text.includes(searchValue)) {
+                        p.style.display = "";
+                        p.classList.add("highlight");
+                      } else if (searchValue) {
+                        p.style.display = "none";
+                      } else {
+                        p.style.display = "";
+                      }
+                    });
+                  });
+
+                  document.getElementById('searchBox').addEventListener('keyup', function (e) {
+                    if (e.key === 'Enter') document.getElementById('searchButton').click();
+                  });
+
+                  document.getElementById("clearButton").addEventListener("click", function () {
+                    document.getElementById("searchBox").value = "";
+                    let paragraphs = document.querySelectorAll(".right .mycareers");
+                    paragraphs.forEach(p => {
+                      p.style.display = "";
+                      p.classList.remove("highlight");
+                    });
+                  });
+                </script>
+
+              </body>
+
+              </html>
+
+              <div class="instruction">Click a career to see which subjects can lead to it!</div>
+              <ul class="item-list" id="careerList">
+                <li class="mycareers" data-learning="Music &amp; Dance, Computer Studies"
+                  data-pathway="Arts &amp; Sports">Music Production Professional</li>
+                <li class="mycareers" data-learning="Music &amp; Dance" data-pathway="Unknown">Performance &amp; Arts
+                  Education Professional</li>
+                <li class="mycareers" data-learning="Fine Art, Computer Studies" data-pathway="Arts &amp; Sports">Fine
+                  Artist</li>
+                <li class="mycareers" data-learning="Fine Art" data-pathway="Arts &amp; Sports">Arts and Design
+                  Professional</li>
+                <li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Unknown">Art
+                  Audio/Video Communication Professional</li>
+                <li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Social Sciences">
+                  Media Production Professional</li>
+                <li class="mycareers" data-learning="Media Technology, Computer Studies" data-pathway="Social Sciences">
+                  Journalism Professional</li>
+                <li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="Unknown">Software
+                  &amp; System Development Professional</li>
+                <li class="mycareers" data-learning="Computer Studies, Mathematics" data-pathway="Arts &amp; Sports">
+                  Graphic Design Professional</li>
+                <li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Unknown">Ball Games
+                  Professional</li>
+                <li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Arts &amp; Sports">Sports
+                  Management Professional</li>
+                <li class="mycareers" data-learning="Sports &amp; Recreation" data-pathway="Unknown">Track &amp; Field
+                  Professional</li>
+                <li class="mycareers" data-learning="Physical Education, Sports &amp; Recreation"
+                  data-pathway="Arts &amp; Sports">Sports &amp; Wellness Professional</li>
+                <li class="mycareers" data-learning="Physical Education, Sports &amp; Recreation"
+                  data-pathway="Unknown">Physiotherapy Professional</li>
+                <li class="mycareers"
+                  data-learning="Theatre &amp; Film, Computer Studies, Literature in English, Fasihi ya Kiswahili"
+                  data-pathway="Unknown">Onstage &amp; Onscreen Storytelling Professional</li>
+                <li class="mycareers" data-learning="Biology, Chemistry" data-pathway="Unknown">Medical Professional
+                </li>
+                <li class="mycareers" data-learning="Biology, Chemistry" data-pathway="STEM">Health Science Professional
+                </li>
+                <li class="mycareers" data-learning="Biology, Chemistry" data-pathway="Unknown">Pharmaceutical &amp;
+                  Biomedical Professional</li>
+                <li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning"
+                  data-pathway="Social Sciences">Government &amp; Public Administration Professional</li>
+                <li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning"
+                  data-pathway="Unknown">Cultural Industries Professional</li>
+                <li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning"
+                  data-pathway="Unknown">Legal Professional</li>
+                <li class="mycareers" data-learning="History &amp; Citizenship, Community Service Learning"
+                  data-pathway="Social Sciences">Government &amp; Public Leadership Professional</li>
+                <li class="mycareers" data-learning="Community Service Learning, History &amp; Citizenship"
+                  data-pathway="Unknown">Human Services Professional</li>
+                <li class="mycareers" data-learning="Community Service Learning, History &amp; Citizenship"
+                  data-pathway="Social Sciences">Community Leadership Professional</li>
+                <li class="mycareers" data-learning="Religious Education, History &amp; Citizenship"
+                  data-pathway="Social Sciences">Religious Practitioner Professional</li>
+                <li class="mycareers" data-learning="Religious Education, History &amp; Citizenship"
+                  data-pathway="Unknown">Ministry &amp; Pastoral Care Professional</li>
+                <li class="mycareers" data-learning="Religious Education, History &amp; Citizenship"
+                  data-pathway="Unknown">Clergy</li>
+                <li class="mycareers" data-learning="Religious Education, History &amp; Citizenship"
+                  data-pathway="Unknown">Temple &amp; Ashram Management Professional</li>
+                <li class="mycareers"
+                  data-learning="English, Media Technology, Kiswahili/ Kenya Sign Language, Mandarin Chinese, French, German, Arabic, Fasihi ya Kiswahili"
+                  data-pathway="Unknown">Linguistics Professional</li>
+                <li class="mycareers" data-learning="English, Media Technology" data-pathway="Social Sciences">
+                  Communication &amp; Media Professional</li>
+                <li class="mycareers" data-learning="English, Media Technology" data-pathway="Social Sciences">
+                  Journalism Professional</li>
+                <li class="mycareers" data-learning="English, Literature in English" data-pathway="Unknown">Education
+                  &amp; Training Professional (English)</li>
+                <li class="mycareers" data-learning="Geography, Physics" data-pathway="Unknown">Weather Study
+                  Professional</li>
+                <li class="mycareers" data-learning="Geography, Physics" data-pathway="Unknown">Geospatial &amp; Urban
+                  Development Professional</li>
+                <li class="mycareers" data-learning="Business Studies, Mathematics" data-pathway="Social Sciences">
+                  Business Professional</li>
+                <li class="mycareers" data-learning="Business Studies, Mathematics" data-pathway="Unknown">Corporate
+                  Finance Management Professional</li>
+                <li class="mycareers" data-learning="Sign Language, English" data-pathway="Unknown">Education &amp;
+                  Training Professional (Sign Language)</li>
+                <li class="mycareers" data-learning="Sign Language, English, French, Arabic, German, chinese Mandarin"
+                  data-pathway="Unknown">Language Interpreter Professional</li>
+                <li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Arts &amp; Sports">
+                  Mtalam wa Fasihi na Utamaduni</li>
+                <li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Sign
+                  Language Interpretation Specialist</li>
+                <li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Unknown">Sign
+                  Language Educator</li>
+                <li class="mycareers" data-learning="Kiswahili/ Kenya Sign Language" data-pathway="Social Sciences">
+                  Indigenous Languages Development Specialist</li>
+                <li class="mycareers" data-learning="Mandarin Chinese, German, Arabic" data-pathway="Social Sciences">
+                  Global Business Professional</li>
+                <li class="mycareers" data-learning="German, French" data-pathway="Unknown">Neo Dialect Professional
+                </li>
+                <li class="mycareers" data-learning="Arabic, French, German, Mandarin Chinese" data-pathway="Unknown">
+                  Language Service &amp; Diplomacy Professional</li>
+                <li class="mycareers" data-learning="Building &amp; Construction, Physics, Mathematics"
+                  data-pathway="STEM">Construction Technician</li>
+                <li class="mycareers" data-learning="Building &amp; Construction, Physics, Mathematics"
+                  data-pathway="Arts &amp; Sports">Architecture &amp; Design Professional</li>
+                <li class="mycareers" data-learning="Physics, Mathematics" data-pathway="STEM">Applied Physics
+                  Professional</li>
+                <li class="mycareers" data-learning="Physics, Mathematics" data-pathway="STEM">Engineering Professional
+                </li>
+                <li class="mycareers" data-learning="General Science, Biology" data-pathway="Unknown">Environment &amp;
+                  Health Professional</li>
+                <li class="mycareers" data-learning="Agriculture, Biology" data-pathway="Unknown">Production &amp; Farm
+                  Management Professional</li>
+                <li class="mycareers" data-learning="Mathematics, Computer Studies" data-pathway="Unknown">Statistics
+                  &amp; Data Analysis Professional</li>
+                <li class="mycareers" data-learning="Agriculture, Home Science, Biology" data-pathway="STEM">Nutrition
+                  &amp; Food Science Professional</li>
+                <li class="mycareers" data-learning="Marine &amp; Fisheries, Geography" data-pathway="Unknown">Marine
+                  Operation Professional</li>
+                <li class="mycareers" data-learning="Marine &amp; Fisheries, Geography" data-pathway="Unknown">
+                  Navigation Professional</li>
+                <li class="mycareers" data-learning="Electricity, Physics" data-pathway="STEM">Electrical Engineering
+                  Professional</li>
+                <li class="mycareers" data-learning="Metal Work" data-pathway="Unknown">Advanced Metal Manufacturing
+                  Professional</li>
+                <li class="mycareers" data-learning="Metal Work" data-pathway="Unknown">Metal Fabrication Professional
+                </li>
+                <li class="mycareers" data-learning="Aviation Technology, Physics, Mathemarics" data-pathway="Unknown">
+                  Air Traffic Control Technician</li>
+                <li class="mycareers" data-learning="Aviation Technology, physics, Mathematics" data-pathway="Unknown">
+                  Aviation Crew</li>
+                <li class="mycareers" data-learning="Wood Work" data-pathway="Arts &amp; Sports">Wood Design &amp;
+                  Manufacturing Professional</li>
+                <li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Arts &amp; Sports">Mtalam wa
+                  Fasihi na Utamaduni</li>
+                <li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Arts &amp; Sports">Fasihi ya
+                  Kiswahili Researcher</li>
+                <li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Kiswahili Literary Arts
+                  Professional</li>
+                <li class="mycareers" data-learning="Fasihi ya Kiswahili" data-pathway="Unknown">Kiswahili Curriculum
+                  Developer</li>
+                <li class="mycareers" data-learning="Power &amp; Mechanics, Physics" data-pathway="Unknown">Automotives
+                  &amp; Diesel Professional</li>
+                <li class="mycareers" data-learning="Power &amp; Mechanics, physics" data-pathway="Unknown">Power
+                  Generation &amp; Distribution Professional</li>
+                <li class="mycareers" data-learning="Indigenous Languages" data-pathway="Social Sciences">Indigenous
+                  Language Journalist &amp; Media Professional</li>
+                <li class="mycareers" data-learning="Literature in English" data-pathway="Unknown">Literary Arts
+                  Professional</li>
+                <li class="mycareers" data-learning="" data-pathway="Unknown">Education &amp; Training Professional</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glossary Toggle Button -->
+    <button id="glossaryToggle">Glossary</button>
+
+    <!-- Glossary Slide-in Panel -->
+    <div id="glossaryPanel">
+      <h2>Glossary</h2>
+
+      <!-- Search Input -->
+      <input type="text" id="searchInput" placeholder="Search term...">
+      <button id="searchButton">Search</button>
+
+      <div id="glossaryTerms">
+        <div class="glossary-term">
+          <h3>Pathways</h3>
+          <p>Structured career or academic routes that guide learners based on their interests and strengths.
+          </p>
+        </div>
+
+        <div class="glossary-term">
+          <h3>STEM</h3>
+          <p>Science, Technology, Engineering, and Mathematics – areas that prepare students for tech careers.
+          </p>
+        </div>
+
+        <div class="glossary-term">
+          <h3>Social Sciences</h3>
+          <p>Subjects like history, geography, and civics that study society and human behavior.</p>
+        </div>
+
+        <div class="glossary-term">
+          <h3>Art and Sports</h3>
+          <p>Creative and physical areas including music, drama, design, and athletics.</p>
+        </div>
+
+        <div class="glossary-term">
+          <h3>Accounting</h3>
+          <p>The process of recording, summarizing, and analyzing financial transactions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Actuarial Science</h3>
+          <p>The study of risk and uncertainty using mathematics and statistics.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Advertising</h3>
+          <p>The business of creating and promoting products or services to consumers.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Aerospace Engineering</h3>
+          <p>The design, development, and testing of aircraft, spacecraft, and related systems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Agricultural Economics</h3>
+          <p>The application of economic principles to farming and agribusiness.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Agronomy</h3>
+          <p>The science and technology of producing and using plants for food, fuel, and land reclamation.
+          </p>
+        </div>
+        <div class="glossary-term">
+          <h3>Animal Science</h3>
+          <p>The study of the biology and management of animals for human use.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Anthropology</h3>
+          <p>The study of human societies, cultures, and their development.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Applied Mathematics</h3>
+          <p>The use of mathematical methods in practical applications across various fields.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Archaeology</h3>
+          <p>The study of human history through excavation and analysis of artifacts.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Architecture</h3>
+          <p>The art and science of designing and constructing buildings.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Artificial Intelligence</h3>
+          <p>The creation of systems that can perform tasks requiring human intelligence.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Astronomy</h3>
+          <p>The scientific study of celestial objects, space, and the universe.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Automotive Engineering</h3>
+          <p>The design, development, and manufacturing of motor vehicles.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Aviation Management</h3>
+          <p>The operation and oversight of airline and airport activities.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Biochemistry</h3>
+          <p>The study of chemical processes within living organisms.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Bioinformatics</h3>
+          <p>The application of computer technology to the management of biological data.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Biological Sciences</h3>
+          <p>The study of living organisms and life processes.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Biomedical Engineering</h3>
+          <p>The application of engineering principles to healthcare and biology.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Biotechnology</h3>
+          <p>The use of living systems and organisms to develop products and technologies.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Botany</h3>
+          <p>The scientific study of plants.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Business Administration</h3>
+          <p>The management and operation of businesses and organizations.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Chemical Engineering</h3>
+          <p>The application of chemistry, biology, and physics to solve problems involving chemicals.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Chemistry</h3>
+          <p>The study of substances, their properties, and reactions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Civil Engineering</h3>
+          <p>The design, construction, and maintenance of infrastructure projects.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Classical Studies</h3>
+          <p>The study of ancient Greek and Roman languages, literature, and history.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Clinical Psychology</h3>
+          <p>The assessment and treatment of mental illness and behavioral disorders.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Communication Studies</h3>
+          <p>The study of human communication processes and strategies.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Computer Engineering</h3>
+          <p>The design and development of computer hardware and software systems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Computer Science</h3>
+          <p>The study of computers, programming, and computational systems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Construction Management</h3>
+          <p>The planning and coordination of building projects.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Criminology</h3>
+          <p>The study of crime, criminal behavior, and the justice system.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Culinary Arts</h3>
+          <p>The art and science of cooking and food preparation.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Cybersecurity</h3>
+          <p>The protection of computer systems from theft, damage, or unauthorized access.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Data Analytics</h3>
+          <p>The process of examining data sets to draw conclusions and insights.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Data Science</h3>
+          <p>The extraction of knowledge and insights from structured and unstructured data.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Dentistry</h3>
+          <p>The study and treatment of conditions affecting teeth and oral health.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Digital Marketing</h3>
+          <p>The promotion of products or services using online and digital channels.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Ecology</h3>
+          <p>The study of interactions between organisms and their environment.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Economics</h3>
+          <p>The study of production, distribution, and consumption of goods and services.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Education</h3>
+          <p>The process of facilitating learning and acquiring knowledge.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Electrical Engineering</h3>
+          <p>The study and application of electricity, electronics, and electromagnetism.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Emergency Management</h3>
+          <p>The organization and management of resources during disasters.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Energy Management</h3>
+          <p>The efficient use and monitoring of energy resources.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Engineering Management</h3>
+          <p>The leadership and management of engineering projects and teams.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Environmental Science</h3>
+          <p>The study of the environment and solutions to environmental problems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Epidemiology</h3>
+          <p>The study of disease distribution and determinants in populations.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Fashion Design</h3>
+          <p>The art of designing clothing and accessories.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Film Production</h3>
+          <p>The process of producing movies and visual storytelling content.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Finance</h3>
+          <p>The management of money, investments, and financial institutions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Fine Arts</h3>
+          <p>The creation and study of visual and performing arts.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Fisheries Science</h3>
+          <p>The study and management of fish resources.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Food Science</h3>
+          <p>The study of food composition, processing, and safety.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Forensic Science</h3>
+          <p>The application of scientific methods to solve crimes.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Forestry</h3>
+          <p>The science and practice of managing forest resources.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Game Design</h3>
+          <p>The creation and development of video games.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Genetics</h3>
+          <p>The study of genes, heredity, and genetic variation.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Geography</h3>
+          <p>The study of Earth's landscapes, environments, and human societies.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Geology</h3>
+          <p>The study of the Earth's physical structure and history.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Graphic Design</h3>
+          <p>The art of visual communication through typography, imagery, and layout.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Health Administration</h3>
+          <p>The management of healthcare systems and organizations.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>History</h3>
+          <p>The study of past events and human societies.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Hospitality Management</h3>
+          <p>The management of hotels, restaurants, and tourism businesses.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Human Resource Management</h3>
+          <p>The management of employee relations, recruitment, and development.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Industrial Design</h3>
+          <p>The design of manufactured products for usability and aesthetics.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Industrial Engineering</h3>
+          <p>The optimization of complex processes and systems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Information Technology</h3>
+          <p>The use of computers and telecommunications to store and transmit data.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Interior Design</h3>
+          <p>The planning and design of interior spaces.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>International Relations</h3>
+          <p>The study of relationships between countries and global affairs.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Journalism</h3>
+          <p>The gathering, assessment, and presentation of news and information.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Landscape Architecture</h3>
+          <p>The design of outdoor areas, landmarks, and structures.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Law</h3>
+          <p>The study and practice of legal systems and regulations.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Library Science</h3>
+          <p>The study of managing information and library resources.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Linguistics</h3>
+          <p>The scientific study of language and its structure.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Marine Biology</h3>
+          <p>The study of organisms in ocean and other saltwater environments.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Marketing</h3>
+          <p>The promotion and selling of products or services.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Materials Science</h3>
+          <p>The study of materials and their properties for various applications.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Mathematics</h3>
+          <p>The abstract science of number, quantity, and space.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Mechanical Engineering</h3>
+          <p>The design and manufacturing of mechanical systems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Mechatronics</h3>
+          <p>The integration of mechanical, electronic, and software engineering.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Medical Laboratory Science</h3>
+          <p>The study and analysis of medical samples for diagnosis.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Medicine</h3>
+          <p>The science of diagnosing, treating, and preventing disease.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Meteorology</h3>
+          <p>The study of weather and atmospheric conditions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Microbiology</h3>
+          <p>The study of microorganisms and their effects.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Mining Engineering</h3>
+          <p>The extraction and processing of minerals from the Earth.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Music</h3>
+          <p>The study and performance of musical arts.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Nanotechnology</h3>
+          <p>The manipulation of matter on an atomic or molecular scale.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Nursing</h3>
+          <p>The care and treatment of patients to promote health and recovery.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Nutrition</h3>
+          <p>The study of nutrients in food and their effects on health.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Occupational Therapy</h3>
+          <p>The treatment to help people participate in daily activities.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Oceanography</h3>
+          <p>The study of oceans and marine environments.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Operations Management</h3>
+          <p>The administration of business practices for efficiency.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Optometry</h3>
+          <p>The diagnosis and treatment of vision problems.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Paleontology</h3>
+          <p>The study of prehistoric life through fossils.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Performing Arts</h3>
+          <p>The creation and performance of artistic works for an audience.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Petroleum Engineering</h3>
+          <p>The exploration and extraction of oil and gas.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Pharmacy</h3>
+          <p>The preparation and dispensing of medications.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Philosophy</h3>
+          <p>The study of fundamental questions about existence and knowledge.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Photography</h3>
+          <p>The art and practice of taking and processing photographs.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Physical Education</h3>
+          <p>The teaching and promotion of physical fitness and health.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Physics</h3>
+          <p>The study of matter, energy, and the forces of nature.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Physiotherapy</h3>
+          <p>The treatment to restore, maintain, and improve movement.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Plant Science</h3>
+          <p>The study of plants and their uses.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Political Science</h3>
+          <p>The study of political systems and government.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Project Management</h3>
+          <p>The planning, execution, and completion of projects.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Psychology</h3>
+          <p>The study of the mind and behavior.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Public Administration</h3>
+          <p>The implementation of government policy and programs.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Public Health</h3>
+          <p>The science of protecting and improving community health.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Quantity Surveying</h3>
+          <p>The estimation and control of construction costs.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Real Estate Management</h3>
+          <p>The management of property development and transactions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Religious Studies</h3>
+          <p>The study of religious beliefs and practices.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Renewable Energy</h3>
+          <p>The production of energy from renewable sources.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Robotics</h3>
+          <p>The design and use of robots for various applications.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Social Work</h3>
+          <p>The provision of support to individuals and communities in need.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Sociology</h3>
+          <p>The study of society, social relationships, and institutions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Software Engineering</h3>
+          <p>The design, development, and maintenance of software applications.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Sports Management</h3>
+          <p>The business and organization of sports teams and events.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Statistics</h3>
+          <p>The collection, analysis, and interpretation of numerical data.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Supply Chain Management</h3>
+          <p>The management of goods and services flow.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Sustainable Development</h3>
+          <p>The practice of meeting present needs without compromising the future.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Teaching</h3>
+          <p>The practice of educating and imparting knowledge.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Telecommunications</h3>
+          <p>The transmission of information over distances.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Theatre Arts</h3>
+          <p>The study and performance of drama and stage productions.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Theology</h3>
+          <p>The study of the nature of the divine and religion.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Tourism Management</h3>
+          <p>The management of travel and tourism services.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Urban Planning</h3>
+          <p>The development and design of land use and infrastructure.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Veterinary Medicine</h3>
+          <p>The treatment and care of animals.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Wildlife Management</h3>
+          <p>The conservation and regulation of wildlife populations.</p>
+        </div>
+        <div class="glossary-term">
+          <h3>Zoology</h3>
+          <p>The study of animals and their biology.</p>
+        </div>
+
+      </div>
+
+
+
+      <!-- Exit Button -->
+      <div class="glossary-exit">
+        <button onclick="document.getElementById('glossaryPanel').classList.remove('open')">Close</button>
+      </div>
+    </div>
+
+  </main>
+  <script src="../statics/scripts.js"></script>
+  <script>
+    const careers = document.querySelectorAll('#careerList .mycareers');
+    const learningAreas = document.querySelectorAll('#learningAreaList .mycareers');
+
+    function clearGlows() {
+      careers.forEach(c => c.classList.remove('glow'));
+      learningAreas.forEach(l => l.classList.remove('glow'));
+    }
+
+    careers.forEach(career => {
+      career.addEventListener('click', function () {
+        clearGlows();
+        this.classList.add('glow');
+        const learningText = this.getAttribute('data-learning').split(',').map(l => l.trim());
+        learningAreas.forEach(area => {
+          if (learningText.includes(area.textContent)) {
+            area.classList.add('glow');
+          }
+        });
+      });
+    });
+
+    learningAreas.forEach(area => {
+      area.addEventListener('click', function () {
+        clearGlows();
+        this.classList.add('glow');
+        const careerText = this.getAttribute('data-careers').split(',').map(c => c.trim());
+        careers.forEach(career => {
+          if (careerText.includes(career.textContent)) {
+            career.classList.add('glow');
+          }
+        });
+      });
+    });
+
+    function filterByPathway(pathway) {
+      learningAreas.forEach(area => {
+        area.classList.toggle('hidden', pathway !== 'All' && area.dataset.pathway !== pathway);
+      });
+
+      careers.forEach(career => {
+        career.classList.toggle('hidden', pathway !== 'All' && career.dataset.pathway !== pathway);
+      });
+
+      clearGlows();
+    }
+  </script>
+
+  <script>
+    // Toggle glossary panel
+    document.getElementById('glossaryToggle').onclick = function () {
+      document.getElementById('glossaryPanel').classList.toggle('open');
+    };
+
+    // Glossary search functionality
+    document.getElementById('searchButton').onclick = function () {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const terms = document.querySelectorAll('#glossaryTerms .glossary-term');
+
+      terms.forEach(term => {
+        const title = term.querySelector('h3').innerText.toLowerCase();
+        const desc = term.querySelector('p').innerText.toLowerCase();
+
+        if (title.includes(input) || desc.includes(input)) {
+          term.style.display = 'block';
+        } else {
+          term.style.display = 'none';
+        }
+      });
+    };
+
+    // Optional: Allow typing to trigger search
+    document.getElementById('searchInput').addEventListener('keyup', function (e) {
+      if (e.key === 'Enter') document.getElementById('searchButton').click();
+    });
+
+  </script>
+</body>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Instruction Popup Guide</title>
+  <style>
+    #instructionPopupP {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popupContentP {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .buttonsP {
+      margin-top: 15px;
+    }
+
+    .buttonsP button {
+      margin: 5px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #007BFF;
+      color: white;
+    }
+
+    .buttonsP button:hover {
+      background: #0056b3;
+    }
+
+    .instructionImageP {
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Welcome to My Web Page</h1>
+  <p>This is your homepage or dashboard content.</p>
+
+  <!-- Instruction Popup -->
+  <div id="instructionPopupP">
+    <div class="popupContentP">
+      <p id="instructionTextP">Loading...</p>
+      <img id="instructionImageP" class="instructionImageP" style="display:none;">
+      <div class="buttonsP">
+        <button onclick="prevInstructionP()">Previous</button>
+        <button onclick="skipInstructionsP()">Skip</button>
+        <button onclick="nextInstructionP()">Next</button>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const instructionsP = [
+      { text: "Welcome to the Step 3 and 4 of understanding CBE curriculum for a better decision making.", img: "" },
+      { text: "In this step you have Learning areas on the left and Suggested careers on the right", img: "" },
+      { text: "On clicking a Learning area the related Suggested Careers pop.", img: "" },
+      { text: "On clicking a Suggested Careers the related Learning area pop.", img: "" },
+      { text: "Now, Let's GO!", img: "" }
+    ];
+
+    let currentStepP = 0;
+
+    function showInstructionP() {
+      const stepP = instructionsP[currentStepP];
+      document.getElementById('instructionTextP').innerText = stepP.text;
+
+      if (stepP.img) {
+        document.getElementById('instructionImageP').src = stepP.img;
+        document.getElementById('instructionImageP').style.display = 'block';
+      } else {
+        document.getElementById('instructionImageP').style.display = 'none';
+      }
+    }
+
+    function nextInstructionP() {
+      if (currentStepP < instructionsP.length - 1) {
+        currentStepP++;
+        showInstructionP();
+      } else {
+        skipInstructionsP();
+      }
+    }
+
+    function prevInstructionP() {
+      if (currentStepP > 0) {
+        currentStepP--;
+        showInstructionP();
+      }
+    }
+
+    function skipInstructionsP() {
+      document.getElementById('instructionPopupP').style.display = 'none';
+    }
+
+    window.onload = function () {
+      document.getElementById('instructionPopupP').style.display = 'flex';
+      showInstructionP();
+    };
+  </script>
+
+</body>
+
+</html>
+
+
+</html>
